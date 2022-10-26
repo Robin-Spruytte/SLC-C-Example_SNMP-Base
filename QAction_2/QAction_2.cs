@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
+using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
@@ -10,19 +8,25 @@ using Skyline.DataMiner.Scripting;
 /// </summary>
 public static class QAction
 {
-    /// <summary>
-    /// The QAction entry point.
-    /// </summary>
-    /// <param name="protocol">Link with SLProtocol process.</param>
-    public static void Run(SLProtocol protocol)
-    {
-        try
-        {
-
-        }
-        catch (Exception ex)
-        {
-            protocol.Log("QA" + protocol.QActionID + "|" + protocol.GetTriggerParameter() + "|Run|Exception thrown:" + Environment.NewLine + ex, LogType.Error, LogLevel.NoLogging);
-        }
-    }
+	/// <summary>
+	/// The QAction entry point.
+	/// </summary>
+	/// <param name="protocol">Link with SLProtocol process.</param>
+	public static void Run(SLProtocol protocol)
+	{
+		try
+		{
+			// Every restart of an element, the method is defaulted back to "Fast" by DataMiner so we only need to change it if we expect 'Accurate'
+			CalculationMethod rateCalculationsMethod = (CalculationMethod)Convert.ToInt32(protocol.GetParameter(Parameter.interfacesratecalculationsmethod));
+			if (rateCalculationsMethod == CalculationMethod.Accurate)
+			{
+				SnmpDeltaHelper.UpdateRateDeltaTracking(protocol, groupId: 1000, CalculationMethod.Accurate);
+				SnmpDeltaHelper.UpdateRateDeltaTracking(protocol, groupId: 1100, CalculationMethod.Accurate);
+			}
+		}
+		catch (Exception ex)
+		{
+			protocol.Log("QA" + protocol.QActionID + "|" + protocol.GetTriggerParameter() + "|Run|Exception thrown:" + Environment.NewLine + ex, LogType.Error, LogLevel.NoLogging);
+		}
+	}
 }
