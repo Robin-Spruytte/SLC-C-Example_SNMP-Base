@@ -100,11 +100,13 @@
 
 			public void Load()
 			{
-				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, new uint[]
+				var columnsToGetIdx = new uint[]
 				{
 					Parameter.Iftable.Idx.iftableifindex,
 					Parameter.Iftable.Idx.iftableifratedata,
-				});
+				};
+
+				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, columnsToGetIdx);
 
 				Keys = (object[])tableData[0];
 				IfRateData = (object[])tableData[1];
@@ -177,6 +179,16 @@
 			return -1;
 		}
 
+		public static bool CheckDiscontinuity(string currentDiscontinuity, string previousDiscontinuity)
+		{
+			if (!String.IsNullOrEmpty(previousDiscontinuity) && currentDiscontinuity != previousDiscontinuity)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public void ProcessData()
 		{
 			SnmpDeltaHelper snmpDeltaHelper = new SnmpDeltaHelper(protocol, GroupId, Parameter.interfacesratecalculationsmethod);
@@ -221,20 +233,10 @@
 			}
 		}
 
-		public void UpdateProtocol(SLProtocol protocol)
+		public void UpdateProtocol()
 		{
 			iftableSetter.SetColumns();
 			iftableSetter.SetParams();
-		}
-
-		public static bool CheckDiscontinuity(string currentDiscontinuity, string previousDiscontinuity)
-		{
-			if (!String.IsNullOrEmpty(previousDiscontinuity) && currentDiscontinuity != previousDiscontinuity)
-			{
-				return true;
-			}
-
-			return false;
 		}
 
 		private Dictionary<string, DuplexStatus> ConvertDuplexColumnToDictionary()
@@ -297,11 +299,13 @@
 
 			public void Load()
 			{
-				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, new uint[]
+				var columnsToGetIdx = new uint[]
 				{
 					Parameter.Dot3statstable.Idx.dot3statsindex,
 					Parameter.Dot3statstable.Idx.dot3statsduplexstatus,
-				});
+				};
+
+				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, columnsToGetIdx);
 
 				Keys = (object[])tableData[0];
 				DuplexStatuses = (object[])tableData[1];

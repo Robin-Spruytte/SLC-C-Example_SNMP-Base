@@ -12,6 +12,8 @@
 	using Skyline.DataMiner.Scripting;
 	using Skyline.Protocol.Extensions;
 
+	using SLNetMessages = Skyline.DataMiner.Net.Messages;
+
 	public class IfxRateData
 	{
 		public SnmpRate64 BitrateInData { get; set; }
@@ -101,11 +103,13 @@
 
 			public void Load()
 			{
-				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, new uint[]
+				var columnsToGetIdx = new uint[]
 				{
 					Parameter.Ifxtable.Idx.ifxtableifindex,
 					Parameter.Ifxtable.Idx.ifxtableifratedata,
-				});
+				};
+
+				var tableData = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, Parameter.Ifxtable.tablePid, columnsToGetIdx);
 
 				Keys = (object[])tableData[0];
 				IfRateData = (object[])tableData[1];
@@ -183,7 +187,7 @@
 		public void CopyDiscontinuityToIfTable(SLProtocol protocol)
 		{
 			protocol.NotifyProtocol(
-				220 /*NT_FILL_ARRAY_WITH_COLUMN*/,
+				(int)SLNetMessages.NotifyType.NT_FILL_ARRAY_WITH_COLUMN,
 				new object[] { Parameter.Iftable.tablePid, Parameter.Iftable.Pid.iftableifcounterdiscontinuitytime },
 				new object[] { ifxtableGetter.Keys, ifxtableGetter.Discontinuity });
 		}
@@ -296,11 +300,13 @@
 
 			public void Load()
 			{
-				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, new uint[]
+				var columnsToGetIdx = new uint[]
 				{
 					Parameter.Dot3statstable.Idx.dot3statsindex,
 					Parameter.Dot3statstable.Idx.dot3statsduplexstatus,
-				});
+				};
+
+				var tableData = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, Parameter.Dot3statstable.tablePid, columnsToGetIdx);
 
 				Keys = (object[])tableData[0];
 				DuplexStatuses = (object[])tableData[1];
@@ -351,7 +357,7 @@
 					columnsToGet.Add(Parameter.Ifxtable.Idx.ifxtableifratedata);
 				}
 
-				var tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet.ToArray());
+				var tableData = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, Parameter.Ifxtable.tablePid, columnsToGet.ToArray());
 
 				Keys = (object[])tableData[0];
 				OctetsIn = (object[])tableData[1];

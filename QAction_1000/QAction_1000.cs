@@ -18,7 +18,7 @@ public class IfTable
 		{
 			IfTableProcessor interfaceTableProcessor = new IfTableProcessor(protocol);
 			interfaceTableProcessor.ProcessData();
-			interfaceTableProcessor.UpdateProtocol(protocol);
+			interfaceTableProcessor.UpdateProtocol();
 		}
 		catch (Exception ex)
 		{
