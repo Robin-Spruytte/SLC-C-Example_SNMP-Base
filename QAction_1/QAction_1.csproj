@@ -49,12 +49,22 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfaceDiscontinuityHelper.cs" />
+    <Compile Include="InterfaceRateData32.cs" />
+    <Compile Include="InterfaceRateData64.cs" />
+    <Compile Include="InterfaceUtilizationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol">
-      <Version>10.0.0.5</Version>
+      <Version>10.2.11</Version>
+    </PackageReference>
+    <PackageReference Include="SLC.Lib.Protocol">
+      <Version>1.2.2.5</Version>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.1.118</Version>

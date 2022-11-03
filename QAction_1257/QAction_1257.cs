@@ -1,5 +1,4 @@
 using System;
-
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
@@ -14,14 +13,14 @@ public class QAction
 	{
 		try
 		{
-			int iTriggerPID = protocol.GetTriggerParameter();
-			string sRowKey = protocol.RowKey();
-			object oValue = protocol.GetParameter(Convert.ToInt32(iTriggerPID));
+			int triggerPid = protocol.GetTriggerParameter();
+			string rowKey = protocol.RowKey();
+			object value = protocol.GetParameter(Convert.ToInt32(triggerPid));
 
-			switch (iTriggerPID)
+			switch (triggerPid)
 			{
 				case Parameter.Write.interfacesadminstatus:
-					protocol.SetParameters(new[] { Parameter.iftablesetinstance, Parameter.Write.iftableifadminstatus }, new object[] { sRowKey, oValue });
+					protocol.SetParameters(new[] { Parameter.iftablesetinstance, Parameter.Write.iftableifadminstatus }, new[] { rowKey, value });
 
 					// Note: We poll the entire table so the bit rate calculation is triggered again using the correct values.
 					// Polling just the cell or row could lead to wrong calculations.
@@ -30,19 +29,19 @@ public class QAction
 					break;
 
 				case Parameter.Write.interfacespromiscuousmode:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifpromiscuousmode }, new object[] { sRowKey, oValue });
+					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifpromiscuousmode }, new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				case Parameter.Write.interfacesalias:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifalias }, new object[] { sRowKey, oValue });
+					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifalias }, new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				case Parameter.Write.interfaceslinkupdowntrapenable:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableiflinkupdowntrapenable }, new object[] { sRowKey, oValue });
+					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableiflinkupdowntrapenable }, new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;

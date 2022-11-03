@@ -1,5 +1,4 @@
 using System;
-
 using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 using Skyline.DataMiner.Scripting;
 
