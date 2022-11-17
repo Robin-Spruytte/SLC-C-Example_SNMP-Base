@@ -48,7 +48,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_1257", "QAction_125
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FED49DAC-62AA-472A-A271-5188A3C0F624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceUtilizationHelperTests", "InterfaceUtilizationHelperTests1\InterfaceUtilizationHelperTests.csproj", "{13C326D1-08B0-49EB-8AEB-8B88062C76D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceUtilizationHelperTests", "InterfaceUtilizationHelperTests\InterfaceUtilizationHelperTests.csproj", "{13C326D1-08B0-49EB-8AEB-8B88062C76D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceDiscontinuityHelperTests", "InterfaceDiscontinuityHelperTests\InterfaceDiscontinuityHelperTests.csproj", "{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2}"
 EndProject
