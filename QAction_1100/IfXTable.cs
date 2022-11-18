@@ -3,11 +3,13 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+
 	using Skyline.DataMiner.Library.Common.Rates;
 	using Skyline.DataMiner.Library.Common.SafeConverters;
 	using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 	using Skyline.DataMiner.Scripting;
 	using Skyline.Protocol.Extensions;
+
 	using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
 	public class IfxTableTimeoutProcessor
@@ -37,15 +39,15 @@
 
 			for (int i = 0; i < ifxtableGetter.Keys.Length; i++)
 			{
-				string streamPk = Convert.ToString(ifxtableGetter.Keys[i]);
+				string key = Convert.ToString(ifxtableGetter.Keys[i]);
 				string serializedIfxRateData = Convert.ToString(ifxtableGetter.IfRateData[i]);
 
 				InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
 
-				rateData.BitrateInData.BufferDelta(snmpDeltaHelper, streamPk);
-				rateData.BitrateOutData.BufferDelta(snmpDeltaHelper, streamPk);
+				rateData.BitrateInData.BufferDelta(snmpDeltaHelper, key);
+				rateData.BitrateOutData.BufferDelta(snmpDeltaHelper, key);
 
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.tablePid].Add(streamPk);
+				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.tablePid].Add(key);
 				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifratedata].Add(rateData.ToJsonString());
 			}
 		}
@@ -70,11 +72,13 @@
 
 			public void Load()
 			{
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, new uint[]
+				uint[] columnsToGet = new uint[]
 				{
 					Parameter.Ifxtable.Idx.ifxtableifindex,
 					Parameter.Ifxtable.Idx.ifxtableifratedata,
-				});
+				};
+
+				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				IfRateData = (object[])tableData[1];
@@ -111,30 +115,20 @@
 
 		private readonly SLProtocol protocol;
 
-		private readonly IfxTableGetter ifxtableGetter;
-		private readonly IfxTableSetter ifxtableSetter;
+		private readonly IfxTableGetter ifxTableGetter;
+		private readonly IfxTableSetter ifxTableSetter;
 		private readonly DuplexGetter duplexGetter;
 
 		public IfxTableProcessor(SLProtocol protocol)
 		{
 			this.protocol = protocol;
 
-			ifxtableGetter = new IfxTableGetter(protocol);
-			ifxtableGetter.Load();
+			ifxTableGetter = new IfxTableGetter(protocol);
+			ifxTableGetter.Load();
 			duplexGetter = new DuplexGetter(protocol);
 			duplexGetter.Load();
 
-			CopyDiscontinuityToIfTable();
-
-			ifxtableSetter = new IfxTableSetter(protocol);
-		}
-
-		public void CopyDiscontinuityToIfTable()
-		{
-			protocol.NotifyProtocol(
-				(int)SLNetMessages.NotifyType.NT_FILL_ARRAY_WITH_COLUMN,
-				new object[] { Parameter.Iftable.tablePid, Parameter.Iftable.Pid.iftableifcounterdiscontinuitytime },
-				new object[] { ifxtableGetter.Keys, ifxtableGetter.Discontinuity });
+			ifxTableSetter = new IfxTableSetter(protocol);
 		}
 
 		public void ProcessData()
@@ -143,46 +137,85 @@
 
 			Dictionary<string, DuplexStatus> duplexStatuses = ConvertDuplexColumnToDictionary();
 
-			for (int i = 0; i < ifxtableGetter.Keys.Length; i++)
+			for (int i = 0; i < ifxTableGetter.Keys.Length; i++)
 			{
-				string serializedIfxRateData = Convert.ToString(ifxtableGetter.IfxRateData[i]);
-				string key = Convert.ToString(ifxtableGetter.Keys[i]);
-				uint speedInTable = Convert.ToUInt32(ifxtableGetter.Speed[i]);
+				// Key
+				string key = Convert.ToString(ifxTableGetter.Keys[i]);
+				ifxTableSetter.SetColumnsData[Parameter.Ifxtable.tablePid].Add(key);
 
-				double speedValueToUse = Convert.ToDouble(speedInTable) * 1000000;
+				// Rates
+				ProcessBitRates(snmpDeltaHelper, i, out double bitrateIn, out double bitrateOut);
 
-				DuplexStatus duplexStatus = duplexStatuses.ContainsKey(key)
-					? duplexStatuses[key]
-					: DuplexStatus.NotInitialized;
+				// Utilization
+				ProcessUtilization(duplexStatuses, i, key, bitrateIn, bitrateOut);
+			}
 
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.tablePid].Add(Convert.ToString(ifxtableGetter.Keys[i]));
-
-				InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
-				string currentDiscontinuity = Convert.ToString(ifxtableGetter.Discontinuity[i]);
-				bool discontinuity = InterfaceDiscontinuityHelper.CheckDiscontinuity(currentDiscontinuity, rateData.PreviousDiscontinuity);
-
-				ifxtableSetter.SetParamsData[Parameter.ifxtablesnmpagentrestartflag] = 0;
-				if (ifxtableGetter.IsSnmpAgentRestarted || discontinuity)
-				{
-					rateData.BitrateInData = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
-					rateData.BitrateOutData = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
-				}
-
-				double bitrateIn = CalculateBitrateIn(i, snmpDeltaHelper, rateData.BitrateInData);
-				double bitrateOut = CalculateBitrateOut(i, snmpDeltaHelper, rateData.BitrateOutData);
-				double utilization = InterfaceUtilizationHelper.CalculateUtilization(bitrateIn, bitrateOut, speedValueToUse, duplexStatus);
-
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifinbitrate].Add(bitrateIn);
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifoutbitrate].Add(bitrateOut);
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifbandwidthutilization].Add(utilization);
-				ifxtableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifratedata].Add(rateData.ToJsonString());
+			if (ifxTableGetter.IsSnmpAgentRestarted)
+			{
+				ifxTableSetter.SetParamsData[Parameter.ifxtablesnmpagentrestartflag] = 0;
 			}
 		}
 
 		public void UpdateProtocol()
 		{
-			ifxtableSetter.SetColumns();
-			ifxtableSetter.SetParams();
+			ifxTableSetter.SetColumns();
+			ifxTableSetter.SetParams();
+		}
+
+		private static double CalculateBitRate(string key, ulong octectCount, SnmpDeltaHelper snmpDeltaHelper, SnmpRate64 snmpRateHelper)
+		{
+			double octetRate = snmpRateHelper.Calculate(snmpDeltaHelper, octectCount, key);
+			double bitRate = octetRate > 0 ? octetRate * 8 : octetRate;
+
+			return bitRate;
+		}
+
+		private void ProcessBitRates(SnmpDeltaHelper snmpDeltaHelper, int getPosition, out double bitrateIn, out double bitrateOut)
+		{
+			string key = Convert.ToString(ifxTableGetter.Keys[getPosition]);
+
+			string serializedIfxRateData = Convert.ToString(ifxTableGetter.RateData[getPosition]);
+			InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
+
+			string currentDiscontinuity = Convert.ToString(ifxTableGetter.Discontinuity[getPosition]);
+			bool discontinuity = InterfaceDiscontinuityHelper.HasDiscontinuity(currentDiscontinuity, rateData.PreviousDiscontinuity);
+
+			if (ifxTableGetter.IsSnmpAgentRestarted || discontinuity)
+			{
+				rateData.BitrateInData = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
+				rateData.BitrateOutData = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
+			}
+
+			ulong octetsIn = SafeConvert.ToUInt64(Convert.ToDouble(ifxTableGetter.OctetsIn[getPosition]));
+			bitrateIn = CalculateBitRate(key, octetsIn, snmpDeltaHelper, rateData.BitrateInData);
+
+			ulong octetsOut = SafeConvert.ToUInt64(Convert.ToDouble(ifxTableGetter.OctetsOut[getPosition]));
+			bitrateOut = CalculateBitRate(key, octetsOut, snmpDeltaHelper, rateData.BitrateOutData);
+
+			ifxTableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifinbitrate].Add(bitrateIn);
+			ifxTableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifoutbitrate].Add(bitrateOut);
+			ifxTableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifratedata].Add(rateData.ToJsonString());
+		}
+
+		private void ProcessUtilization(Dictionary<string, DuplexStatus> duplexStatuses, int getPosition, string key, double bitrateIn, double bitrateOut)
+		{
+			double speedValue = GetSpeedValue(getPosition);
+
+			DuplexStatus duplexStatus = duplexStatuses.ContainsKey(key)
+				? duplexStatuses[key]
+				: DuplexStatus.NotInitialized;
+
+			double utilization = InterfaceUtilizationHelper.CalculateUtilization(bitrateIn, bitrateOut, speedValue, duplexStatus);
+
+			ifxTableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifbandwidthutilization].Add(utilization);
+		}
+
+		private double GetSpeedValue(int getPosition)
+		{
+			uint speedInTable = Convert.ToUInt32(ifxTableGetter.Speed[getPosition]);
+
+			double speedValueToUse = Convert.ToDouble(speedInTable) * Math.Pow(10, 6);
+			return speedValueToUse;
 		}
 
 		private Dictionary<string, DuplexStatus> ConvertDuplexColumnToDictionary()
@@ -196,27 +229,6 @@
 			}
 
 			return duplexStatuses;
-		}
-
-		private double CalculateBitrateIn(int getPosition, SnmpDeltaHelper snmpDeltaHelper, SnmpRate64 snmpRateHelper)
-		{
-			string streamPk = Convert.ToString(ifxtableGetter.Keys[getPosition]);
-			ulong octetsIn = SafeConvert.ToUInt64(Convert.ToDouble(ifxtableGetter.OctetsIn[getPosition]));
-
-			double octetRateIn = snmpRateHelper.Calculate(snmpDeltaHelper, octetsIn, streamPk);
-			double bitRateIn = octetRateIn > 0 ? octetRateIn / 8 : octetRateIn;
-
-			return bitRateIn;
-		}
-
-		private double CalculateBitrateOut(int getPosition, SnmpDeltaHelper snmpDeltaHelper, SnmpRate64 snmpRateHelper)
-		{
-			string streamPk = Convert.ToString(ifxtableGetter.Keys[getPosition]);
-			ulong octetsOut = SafeConvert.ToUInt64(Convert.ToDouble(ifxtableGetter.OctetsOut[getPosition]));
-			double octetRateOut = snmpRateHelper.Calculate(snmpDeltaHelper, octetsOut, streamPk);
-			double bitRateOut = octetRateOut > 0 ? octetRateOut / 8 : octetRateOut;
-
-			return bitRateOut;
 		}
 
 		private class DuplexGetter
@@ -234,11 +246,13 @@
 
 			public void Load()
 			{
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, new uint[]
+				uint[] columnsToGet = new uint[]
 				{
 					Parameter.Dot3statstable.Idx.dot3statsindex,
 					Parameter.Dot3statstable.Idx.dot3statsduplexstatus,
-				});
+				};
+
+				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				DuplexStatuses = (object[])tableData[1];
@@ -264,7 +278,7 @@
 
 			public object[] Discontinuity { get; private set; }
 
-			public object[] IfxRateData { get; private set; }
+			public object[] RateData { get; private set; }
 
 			public bool IsSnmpAgentRestarted { get; private set; }
 
@@ -272,32 +286,24 @@
 			{
 				IsSnmpAgentRestarted = Convert.ToBoolean(Convert.ToInt16(protocol.GetParameter(Parameter.ifxtabletimeoutafterretriesflag)));
 
-				List<uint> columnsToGet = new List<uint>
+				uint[] columnsToGet = new uint[]
 				{
 					Parameter.Ifxtable.Idx.ifxtableifindex,
 					Parameter.Ifxtable.Idx.ifxtableifhcinoctets,
 					Parameter.Ifxtable.Idx.ifxtableifhcoutoctets,
 					Parameter.Ifxtable.Idx.ifxtableifhighspeed,
 					Parameter.Ifxtable.Idx.ifxtableifcounterdiscontinuitytime,
+					Parameter.Ifxtable.Idx.ifxtableifratedata,
 				};
 
-				if (!IsSnmpAgentRestarted)
-				{
-					columnsToGet.Add(Parameter.Ifxtable.Idx.ifxtableifratedata);
-				}
-
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet.ToArray());
+				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				OctetsIn = (object[])tableData[1];
 				OctetsOut = (object[])tableData[2];
 				Speed = (object[])tableData[3];
 				Discontinuity = (object[])tableData[4];
-
-				if (!IsSnmpAgentRestarted)
-				{
-					IfxRateData = (object[])tableData[5];
-				}
+				RateData = (object[])tableData[5];
 			}
 		}
 
@@ -328,7 +334,7 @@
 
 			public void SetParams()
 			{
-				protocol.SetParameters(SetParamsData.Keys.ToArray(), SetParamsData.Values.ToArray());
+				protocol.SetParams(SetParamsData);
 			}
 		}
 	}

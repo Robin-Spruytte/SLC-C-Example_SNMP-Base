@@ -1,7 +1,9 @@
 ﻿namespace Skyline.DataMiner.Library.Common.Rates
 {
 	using System;
+
 	using Newtonsoft.Json;
+
 	using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 
 	public class InterfaceRateData64

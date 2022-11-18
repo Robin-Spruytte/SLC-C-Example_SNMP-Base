@@ -271,11 +271,6 @@ public static class Parameter
 			public const int iftableifratedata_1022 = 1022;
 			/// <summary>PID: 1022 | Type: read</summary>
 			public const int iftableifratedata = 1022;
-			/// <summary>PID: 1023 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int iftableifcounterdiscontinuitytime_1023 = 1023;
-			/// <summary>PID: 1023 | Type: read</summary>
-			public const int iftableifcounterdiscontinuitytime = 1023;
 			public class Write
 			{
 			}
@@ -392,11 +387,6 @@ public static class Parameter
 			public const int iftableifratedata_1022 = 21;
 			/// <summary>IDX: 21 | Type: read</summary>
 			public const int iftableifratedata = 21;
-			/// <summary>IDX: 22 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int iftableifcounterdiscontinuitytime_1023 = 22;
-			/// <summary>IDX: 22 | Type: read</summary>
-			public const int iftableifcounterdiscontinuitytime = 22;
 		}
 	}
 	public class Ifxtable
@@ -1154,8 +1144,6 @@ public interface SLProtocolExt : SLProtocol
 	object Iftableifbandwidthutilization { get; set; }
 	object Iftableifratedata_1022 { get; set; }
 	object Iftableifratedata { get; set; }
-	object Iftableifcounterdiscontinuitytime_1023 { get; set; }
-	object Iftableifcounterdiscontinuitytime { get; set; }
 	object Iftableifadminstatus_1057 { get; set; }
 	object Ifxtabletimeouttrigger_dummy { get; set; }
 	object Ifxtabletimeoutafterretriesflag_1092 { get; set; }
@@ -1494,11 +1482,6 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Iftableifratedata_1022 {get { return GetParameter(1022); }set { SetParameter(1022, value); }}
 	/// <summary>PID: 1022  | Type: read</summary>
 	public System.Object Iftableifratedata {get { return GetParameter(1022); }set { SetParameter(1022, value); }}
-	/// <summary>PID: 1023  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Iftableifcounterdiscontinuitytime_1023 {get { return GetParameter(1023); }set { SetParameter(1023, value); }}
-	/// <summary>PID: 1023  | Type: read</summary>
-	public System.Object Iftableifcounterdiscontinuitytime {get { return GetParameter(1023); }set { SetParameter(1023, value); }}
 	/// <summary>PID: 1057  | Type: write | DISCREETS: Up = 1, Down = 2, Testing = 3</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftableifadminstatus_1057 {get { return GetParameter(1057); }set { SetParameter(1057, value); }}
@@ -1997,13 +1980,8 @@ public class IftableQActionRow : QActionTableRow
 	public System.Object Iftableifratedata_1022 { get { if (base.Columns.ContainsKey(21)) { return base.Columns[21]; } else { return null; } } set { if (base.Columns.ContainsKey(21)) { base.Columns[21] = value; } else { base.Columns.Add(21, value); } } }
 	/// <summary>PID: 1022 | Type: read</summary>
 	public System.Object Iftableifratedata { get { if (base.Columns.ContainsKey(21)) { return base.Columns[21]; } else { return null; } } set { if (base.Columns.ContainsKey(21)) { base.Columns[21] = value; } else { base.Columns.Add(21, value); } } }
-	/// <summary>PID: 1023 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Iftableifcounterdiscontinuitytime_1023 { get { if (base.Columns.ContainsKey(22)) { return base.Columns[22]; } else { return null; } } set { if (base.Columns.ContainsKey(22)) { base.Columns[22] = value; } else { base.Columns.Add(22, value); } } }
-	/// <summary>PID: 1023 | Type: read</summary>
-	public System.Object Iftableifcounterdiscontinuitytime { get { if (base.Columns.ContainsKey(22)) { return base.Columns[22]; } else { return null; } } set { if (base.Columns.ContainsKey(22)) { base.Columns[22] = value; } else { base.Columns.Add(22, value); } } }
-	public IftableQActionRow() : base(0, 23) { }
-	public IftableQActionRow(System.Object[] oRow) : base(0, 23, oRow) { }
+	public IftableQActionRow() : base(0, 22) { }
+	public IftableQActionRow(System.Object[] oRow) : base(0, 22, oRow) { }
 	public static implicit operator IftableQActionRow(System.Object[] source) { return new IftableQActionRow(source); }
 	public static implicit operator System.Object[](IftableQActionRow source) { return source.ToObjectArray(); }
 }

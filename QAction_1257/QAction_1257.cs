@@ -20,7 +20,9 @@ public class QAction
 			switch (triggerPid)
 			{
 				case Parameter.Write.interfacesadminstatus:
-					protocol.SetParameters(new[] { Parameter.iftablesetinstance, Parameter.Write.iftableifadminstatus }, new[] { rowKey, value });
+					protocol.SetParameters(
+						new[] { Parameter.iftablesetinstance, Parameter.Write.iftableifadminstatus },
+						new[] { rowKey, value });
 
 					// Note: We poll the entire table so the bit rate calculation is triggered again using the correct values.
 					// Polling just the cell or row could lead to wrong calculations.
@@ -29,25 +31,34 @@ public class QAction
 					break;
 
 				case Parameter.Write.interfacespromiscuousmode:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifpromiscuousmode }, new[] { rowKey, value });
+					protocol.SetParameters(
+						new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifpromiscuousmode },
+						new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				case Parameter.Write.interfacesalias:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifalias }, new[] { rowKey, value });
+					protocol.SetParameters(
+						new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableifalias },
+						new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				case Parameter.Write.interfaceslinkupdowntrapenable:
-					protocol.SetParameters(new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableiflinkupdowntrapenable }, new[] { rowKey, value });
+					protocol.SetParameters(
+						new[] { Parameter.ifxtablesetinstance, Parameter.Write.ifxtableiflinkupdowntrapenable },
+						new[] { rowKey, value });
 
 					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				default:
-					// Do Nothing
+					protocol.Log(
+						"QA" + protocol.QActionID + "|Run|QAction triggered by unexpected param '" + triggerPid + "'",
+						LogType.Error,
+						LogLevel.NoLogging);
 					break;
 			}
 		}

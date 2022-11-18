@@ -3,10 +3,22 @@ namespace Skyline.Protocol.Extensions
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+
 	using Skyline.DataMiner.Scripting;
 
 	public static class ProtocolExtension
 	{
+		public static void SetParams(this SLProtocol protocol, Dictionary<int, object> setParamsData)
+		{
+			if (!setParamsData.Any())
+			{
+				// No param to update
+				return;
+			}
+
+			protocol.SetParameters(setParamsData.Keys.ToArray(), setParamsData.Values.ToArray());
+		}
+
 		public static void SetColumns(this SLProtocol protocol, Dictionary<object, List<object>> setColumnsData, DateTime dateTime = default)
 		{
 			// Requires Main 10.0.0 [CU?] or Feature 9.6.6 [CU?] (see RN 23815)

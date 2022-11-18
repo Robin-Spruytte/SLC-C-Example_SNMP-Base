@@ -1,9 +1,10 @@
 using System;
+
 using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
-/// DataMiner QAction Class: Streams Rate Calculations Method.
+/// DataMiner QAction Class: Interfaces Rate Calculations Method.
 /// </summary>
 public static class QAction
 {
