@@ -17,6 +17,7 @@
 		private static readonly TimeSpan MaxDelta = new TimeSpan(0, 10, 0);
 
 		private readonly SLProtocol protocol;
+
 		private readonly IfTableGetter iftableGetter;
 		private readonly IfTableSetter iftableSetter;
 
@@ -147,7 +148,10 @@
 				ProcessUtilization(duplexStatuses, i, key, bitrateIn, bitrateOut);
 			}
 
-			iftableSetter.SetParamsData[Parameter.iftablesnmpagentrestartflag] = 0;
+			if (iftableGetter.IsSnmpAgentRestarted)
+			{
+				iftableSetter.SetParamsData[Parameter.iftablesnmpagentrestartflag] = 0;
+			}
 		}
 
 		public void UpdateProtocol()
@@ -156,8 +160,18 @@
 			iftableSetter.SetParams();
 		}
 
+		private static double CalculateBitRate(string key, uint octectCount, SnmpDeltaHelper snmpDeltaHelper, SnmpRate32 snmpRateHelper)
+		{
+			double octetRate = snmpRateHelper.Calculate(snmpDeltaHelper, octectCount, key);
+			double bitRate = octetRate > 0 ? octetRate * 8 : octetRate;
+
+			return bitRate;
+		}
+
 		private void ProcessBitRates(SnmpDeltaHelper snmpDeltaHelper, int getPosition, out double bitrateIn, out double bitrateOut)
 		{
+			string key = Convert.ToString(iftableGetter.Keys[getPosition]);
+
 			string serializedIfRateData = Convert.ToString(iftableGetter.RateData[getPosition]);
 			InterfaceRateData32 rateData = InterfaceRateData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
 
@@ -170,8 +184,11 @@
 				rateData.BitrateOutData = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
 			}
 
-			bitrateIn = CalculateBitrateIn(getPosition, snmpDeltaHelper, rateData.BitrateInData);
-			bitrateOut = CalculateBitrateOut(getPosition, snmpDeltaHelper, rateData.BitrateOutData);
+			uint octetsIn = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsIn[getPosition]));
+			bitrateIn = CalculateBitRate(key, octetsIn, snmpDeltaHelper, rateData.BitrateInData);
+
+			uint octetsOut = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsOut[getPosition]));
+			bitrateOut = CalculateBitRate(key, octetsOut, snmpDeltaHelper, rateData.BitrateOutData);
 
 			iftableSetter.SetColumnsData[Parameter.Iftable.Pid.iftableifinbitrate].Add(bitrateIn);
 			iftableSetter.SetColumnsData[Parameter.Iftable.Pid.iftableifoutbitrate].Add(bitrateOut);
@@ -211,28 +228,6 @@
 			}
 
 			return duplexStatuses;
-		}
-
-		private double CalculateBitrateIn(int getPosition, SnmpDeltaHelper snmpDeltaHelper, SnmpRate32 snmpRateHelper)
-		{
-			string key = Convert.ToString(iftableGetter.Keys[getPosition]);
-			uint octetsIn = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsIn[getPosition]));
-
-			double octetRateIn = snmpRateHelper.Calculate(snmpDeltaHelper, octetsIn, key);
-			double bitRateIn = octetRateIn > 0 ? octetRateIn * 8 : octetRateIn;
-
-			return bitRateIn;
-		}
-
-		private double CalculateBitrateOut(int getPosition, SnmpDeltaHelper snmpDeltaHelper, SnmpRate32 snmpRateHelper)
-		{
-			string key = Convert.ToString(iftableGetter.Keys[getPosition]);
-			uint octetsOut = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsOut[getPosition]));
-
-			double octetRateOut = snmpRateHelper.Calculate(snmpDeltaHelper, octetsOut, key);
-			double bitRateOut = octetRateOut > 0 ? octetRateOut * 8 : octetRateOut;
-
-			return bitRateOut;
 		}
 
 		private class DuplexGetter

@@ -55,7 +55,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>999</DeviceOID>
 	<ElementType>Training Example</ElementType>
 	<Type relativeTimers="true">snmpv2</Type>
-	<Display defaultPage="General" pageOrder="General;Interface" wideColumnPages="Interface"/>
+	<Display defaultPage="General" pageOrder="General;Interface;Web Interface#http://[Polling Ip]/" wideColumnPages="Interface"/>
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>

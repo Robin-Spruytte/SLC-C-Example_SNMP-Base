@@ -2,15 +2,12 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 
 	using Skyline.DataMiner.Library.Common.Rates;
 	using Skyline.DataMiner.Library.Common.SafeConverters;
 	using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 	using Skyline.DataMiner.Scripting;
 	using Skyline.Protocol.Extensions;
-
-	using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
 	public class IfxTableTimeoutProcessor
 	{
@@ -212,7 +209,7 @@
 
 		private double GetSpeedValue(int getPosition)
 		{
-			uint speedInTable = Convert.ToUInt32(ifxTableGetter.Speed[getPosition]);
+			uint speedInTable = SafeConvert.ToUInt32(Convert.ToDouble(ifxTableGetter.Speed[getPosition]));
 
 			double speedValueToUse = Convert.ToDouble(speedInTable) * Math.Pow(10, 6);
 			return speedValueToUse;
