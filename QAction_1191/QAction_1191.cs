@@ -135,7 +135,7 @@ public class QAction
 			double dBitRateIn = Convert.ToDouble(iftable.BitRateIn[getPosition]);
 			if (dBitRateIn >= 0)
 			{
-				interfaceTableRow.Interfacesinbitrate = dBitRateIn / Math.Pow(10, 6);
+				interfaceTableRow.Interfacesinbitrate = dBitRateIn / Math.Pow(10, 6);	// bps -> Mbps
 			}
 			else
 			{
@@ -145,7 +145,7 @@ public class QAction
 			double dBitRateOut = Convert.ToDouble(iftable.BitRateOut[getPosition]);
 			if (dBitRateOut >= 0)
 			{
-				interfaceTableRow.Interfacesoutbitrate = dBitRateOut / Math.Pow(10, 6);
+				interfaceTableRow.Interfacesoutbitrate = dBitRateOut / Math.Pow(10, 6); // bps -> Mbps
 			}
 			else
 			{
@@ -154,38 +154,38 @@ public class QAction
 		}
 	}
 
-	private static void MergeFromSnmpIfXTable(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int i)
+	private static void MergeFromSnmpIfXTable(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int getPosition)
 	{
-		interfaceTableRow.Interfacespromiscuousmode = ifxtable.PromiscuousMode[i] == null ? -1 : Convert.ToDouble(ifxtable.PromiscuousMode[i]);
-		interfaceTableRow.Interfacesphysicalconnector = ifxtable.ConnectorPresent[i] == null ? -1 : Convert.ToDouble(ifxtable.ConnectorPresent[i]);
-		interfaceTableRow.Interfacesalias = Convert.ToString(ifxtable.Alias[i]);
-		interfaceTableRow.Interfacescounterdiscontinuitytime = Convert.ToDouble(ifxtable.CounterDiscontinuitytime[i]) / 100;
-		interfaceTableRow.Interfaceslinkupdowntrapenable = Convert.ToDouble(ifxtable.LinkUpDownTrapEnable[i]);
+		interfaceTableRow.Interfacespromiscuousmode = ifxtable.PromiscuousMode[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.PromiscuousMode[getPosition]);
+		interfaceTableRow.Interfacesphysicalconnector = ifxtable.ConnectorPresent[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.ConnectorPresent[getPosition]);
+		interfaceTableRow.Interfacesalias = Convert.ToString(ifxtable.Alias[getPosition]);
+		interfaceTableRow.Interfacescounterdiscontinuitytime = Convert.ToDouble(ifxtable.CounterDiscontinuitytime[getPosition]) / 100;
+		interfaceTableRow.Interfaceslinkupdowntrapenable = Convert.ToDouble(ifxtable.LinkUpDownTrapEnable[getPosition]);
 
 		if (interfaceTableRow.Interfacesspeed == null)
 		{
-			interfaceTableRow.Interfacesspeed = ifxtable.HighSpeed[i] == null ? -1 : Convert.ToDouble(ifxtable.HighSpeed[i]);
+			interfaceTableRow.Interfacesspeed = ifxtable.HighSpeed[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HighSpeed[getPosition]);
 		}
 
 		if (interfaceTableRow.Interfacesinoctets == null)
 		{
-			Use64BitCounters(interfaceTableRow, ifxtable, i);
+			Use64BitCounters(interfaceTableRow, ifxtable, getPosition);
 		}
 		else
 		{
-			Use32BitCounters(interfaceTableRow, ifxtable, i);
+			Use32BitCounters(interfaceTableRow, ifxtable, getPosition);
 		}
 	}
 
-	private static void Use32BitCounters(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int i)
+	private static void Use32BitCounters(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int getPosition)
 	{
-		interfaceTableRow.Interfacesinmulticastpkts = ifxtable.InMulticastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.InMulticastPkts[i]);
-		interfaceTableRow.Interfacesinbroadcastpkts = ifxtable.InBroadcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.InBroadcastPkts[i]);
+		interfaceTableRow.Interfacesinmulticastpkts = ifxtable.InMulticastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.InMulticastPkts[getPosition]);
+		interfaceTableRow.Interfacesinbroadcastpkts = ifxtable.InBroadcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.InBroadcastPkts[getPosition]);
 
-		interfaceTableRow.Interfacesoutmulticastpkts = ifxtable.OutMulticastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.OutMulticastPkts[i]);
-		interfaceTableRow.Interfacesoutbroadcastpkts = ifxtable.OutBroadcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.OutBroadcastPkts[i]);
+		interfaceTableRow.Interfacesoutmulticastpkts = ifxtable.OutMulticastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.OutMulticastPkts[getPosition]);
+		interfaceTableRow.Interfacesoutbroadcastpkts = ifxtable.OutBroadcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.OutBroadcastPkts[getPosition]);
 
-		double dBitrateIn = Convert.ToDouble(ifxtable.BitRateIn[i]);
+		double dBitrateIn = Convert.ToDouble(ifxtable.BitRateIn[getPosition]);
 		if (dBitrateIn < -1)
 		{
 			// Indication of discontinuity times, need to set values to N/A
@@ -195,34 +195,34 @@ public class QAction
 		}
 	}
 
-	private static void Use64BitCounters(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int i)
+	private static void Use64BitCounters(InterfacesQActionRow interfaceTableRow, IfXTable ifxtable, int getPosition)
 	{
-		interfaceTableRow.Interfacesinoctets = ifxtable.HcInOctets[i] == null ? -1 : Convert.ToDouble(ifxtable.HcInOctets[i]);
-		interfaceTableRow.Interfacesinucastpkts = ifxtable.HcInUcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcInUcastPkts[i]);
-		interfaceTableRow.Interfacesinmulticastpkts = ifxtable.HcInMulticastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcInMulticastPkts[i]);
-		interfaceTableRow.Interfacesinbroadcastpkts = ifxtable.HcInBroadcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcInBroadcastPkts[i]);
+		interfaceTableRow.Interfacesinoctets = ifxtable.HcInOctets[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcInOctets[getPosition]);
+		interfaceTableRow.Interfacesinucastpkts = ifxtable.HcInUcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcInUcastPkts[getPosition]);
+		interfaceTableRow.Interfacesinmulticastpkts = ifxtable.HcInMulticastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcInMulticastPkts[getPosition]);
+		interfaceTableRow.Interfacesinbroadcastpkts = ifxtable.HcInBroadcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcInBroadcastPkts[getPosition]);
 
-		interfaceTableRow.Interfacesoutoctets = ifxtable.HcOutOctets[i] == null ? -1 : Convert.ToDouble(ifxtable.HcOutOctets[i]);
-		interfaceTableRow.Interfacesoutucastpkts = ifxtable.HcOutUcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcOutUcastPkts[i]);
-		interfaceTableRow.Interfacesoutmulticastpkts = ifxtable.HcOutMulticastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcOutMulticastPkts[i]);
-		interfaceTableRow.Interfacesoutbroadcastpkts = ifxtable.HcOutBroadcastPkts[i] == null ? -1 : Convert.ToDouble(ifxtable.HcOutBroadcastPkts[i]);
+		interfaceTableRow.Interfacesoutoctets = ifxtable.HcOutOctets[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcOutOctets[getPosition]);
+		interfaceTableRow.Interfacesoutucastpkts = ifxtable.HcOutUcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcOutUcastPkts[getPosition]);
+		interfaceTableRow.Interfacesoutmulticastpkts = ifxtable.HcOutMulticastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcOutMulticastPkts[getPosition]);
+		interfaceTableRow.Interfacesoutbroadcastpkts = ifxtable.HcOutBroadcastPkts[getPosition] == null ? -1 : Convert.ToDouble(ifxtable.HcOutBroadcastPkts[getPosition]);
 
-		interfaceTableRow.Interfacesbandwidthutilization = Convert.ToDouble(ifxtable.BandwidthUtilization[i]);
+		interfaceTableRow.Interfacesbandwidthutilization = Convert.ToDouble(ifxtable.BandwidthUtilization[getPosition]);
 
-		double bitrateIn = Convert.ToDouble(ifxtable.BitRateIn[i]);
+		double bitrateIn = Convert.ToDouble(ifxtable.BitRateIn[getPosition]);
 		if (bitrateIn >= 0)
 		{
-			interfaceTableRow.Interfacesinbitrate = bitrateIn / Math.Pow(10, 6);
+			interfaceTableRow.Interfacesinbitrate = bitrateIn / Math.Pow(10, 6);    // bps -> Mbps
 		}
 		else
 		{
 			interfaceTableRow.Interfacesinbitrate = -1;
 		}
 
-		double bitrateOut = Convert.ToDouble(ifxtable.BitRateOut[i]);
+		double bitrateOut = Convert.ToDouble(ifxtable.BitRateOut[getPosition]);
 		if (bitrateOut >= 0)
 		{
-			interfaceTableRow.Interfacesoutbitrate = bitrateOut / Math.Pow(10, 6);
+			interfaceTableRow.Interfacesoutbitrate = bitrateOut / Math.Pow(10, 6);  // bps -> Mbps
 		}
 		else
 		{
