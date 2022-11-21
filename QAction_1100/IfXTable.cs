@@ -112,7 +112,7 @@
 
 		private readonly SLProtocol protocol;
 
-		private readonly IfxTableGetter ifxTableGetter;
+		private readonly IfXTableGetter ifxTableGetter;
 		private readonly IfxTableSetter ifxTableSetter;
 		private readonly DuplexGetter duplexGetter;
 
@@ -120,7 +120,7 @@
 		{
 			this.protocol = protocol;
 
-			ifxTableGetter = new IfxTableGetter(protocol);
+			ifxTableGetter = new IfXTableGetter(protocol);
 			ifxTableGetter.Load();
 			duplexGetter = new DuplexGetter(protocol);
 			duplexGetter.Load();
@@ -256,11 +256,11 @@
 			}
 		}
 
-		private class IfxTableGetter
+		private class IfXTableGetter
 		{
 			private readonly SLProtocol protocol;
 
-			public IfxTableGetter(SLProtocol protocol)
+			public IfXTableGetter(SLProtocol protocol)
 			{
 				this.protocol = protocol;
 			}

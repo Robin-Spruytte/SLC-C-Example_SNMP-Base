@@ -6102,7 +6102,9 @@ By default, this object should have the value Enabled(1) for interfaces which do
 			<Description>Duplex Status (Interfaces)</Description>
 			<Information>
 				<Subtext>
-					<![CDATA[The current mode of operation of the MAC entity.  'unknown' indicates that the current duplex mode could not be determined.
+					<![CDATA[The current mode of operation of the MAC entity.
+- 'N/A' indicates
+- 'Unknown' indicates that the current duplex mode could not be determined.
 
 Management control of the duplex mode is accomplished through the MAU MIB.  When an interface does not support autonegotiation, or when autonegotiation is not enabled, the duplex mode is controlled using ifMauDefaultType.  When autonegotiation is supported and enabled, duplex mode is controlled using ifMauAutoNegAdvertisedBits.  In either case, the currently operating duplex mode is reflected both in this object and in ifMauType.
 
