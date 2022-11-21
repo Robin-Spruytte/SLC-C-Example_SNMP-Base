@@ -2125,6 +2125,7 @@ If the current state was entered prior to the last re-initialization of the loca
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
+				<Sequence noset="true">div:100</Sequence>
 				<Exceptions>
 					<Exception id="1" value="0">
 						<Display state="disabled">No Change</Display>
@@ -2137,17 +2138,15 @@ If the current state was entered prior to the last re-initialization of the loca
 				<OID type="complete">1.3.6.1.2.1.2.2.1.9</OID>
 				<Type>timeticks</Type>
 			</SNMP>
-			<!-- SuppressValidator 2.9.7 No unit applicable -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Range>
 					<Low>0</Low>
-					<High>4294967295</High>
+					<High>42949672.95</High>
 				</Range>
 			</Display>
-			<!-- /SuppressValidator 2.9.7 -->
 			<Measurement>
-				<Type>number</Type>
+				<Type options="time">number</Type>
 			</Measurement>
 		</Param>
 		<Param id="1010" trending="false">
@@ -5316,8 +5315,12 @@ If the current state was entered prior to the last re-initialization of the loca
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
-				<Sequence noset="true">div:100</Sequence>
-				<Decimals>8</Decimals>
+				<Exceptions>
+					<Exception id="1" value="0">
+						<Display state="disabled">No Change</Display>
+						<Value>0</Value>
+					</Exception>
+				</Exceptions>
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
