@@ -1692,10 +1692,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Interfacesoperstatus_1208 {get { return GetParameter(1208); }set { SetParameter(1208, value); }}
 	/// <summary>PID: 1208  | Type: read | DISCREETS: Up = 1, Down = 2, Testing = 3, Unknown = 4, Dormant = 5, Not Present = 6, Lower Layer Down = 7</summary>
 	public System.Object Interfacesoperstatus {get { return GetParameter(1208); }set { SetParameter(1208, value); }}
-	/// <summary>PID: 1209  | Type: read</summary>
+	/// <summary>PID: 1209  | Type: read | EXCEPTIONS: No Change = 0</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Interfaceslastchange_1209 {get { return GetParameter(1209); }set { SetParameter(1209, value); }}
-	/// <summary>PID: 1209  | Type: read</summary>
+	/// <summary>PID: 1209  | Type: read | EXCEPTIONS: No Change = 0</summary>
 	public System.Object Interfaceslastchange {get { return GetParameter(1209); }set { SetParameter(1209, value); }}
 	/// <summary>PID: 1210  | Type: read | EXCEPTIONS: N/A = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
