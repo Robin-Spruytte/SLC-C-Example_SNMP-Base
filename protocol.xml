@@ -6708,7 +6708,7 @@ Note that this object provides redundant information with ifMauType.  Normally, 
 							<MajorVersion id="0">
 								<MinorVersions>
 									<MinorVersion id="1">
-										<Date>2022-10-26</Date>
+										<Date>2022-11-21</Date>
 										<Provider>
 											<Author>SVD</Author>
 											<Company>Skyline Communications</Company>
@@ -6716,6 +6716,9 @@ Note that this object provides redundant information with ifMauType.  Normally, 
 										<Changes>
 											<NewFeature>Initial version</NewFeature>
 										</Changes>
+										<References>
+											<TaskId>172808</TaskId>
+										</References>
 									</MinorVersion>
 								</MinorVersions>
 							</MajorVersion>
