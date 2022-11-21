@@ -3869,9 +3869,11 @@ Additional values for Type are assigned by the Internet Assigned Numbers Authori
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
@@ -5096,9 +5098,11 @@ For interfaces that are used for transmitting network datagrams, this is the siz
 					<High>4294967295</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5128,9 +5132,11 @@ For a sub-layer which has no concept of bandwidth, this object should be zero.]]
 					<High>4294967295</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5181,6 +5187,9 @@ As a result of either explicit management action or per configuration informatio
 			</Display>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
+				<WaH>3</WaH>
+				<CH>2</CH>
 			</Alarm>
 			<Measurement>
 				<Type>discreet</Type>
@@ -5255,6 +5264,9 @@ it should remain in the Not Present(6) state if the interface has missing (typic
 			</Display>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>1</Normal>
+				<WaH>3;4;5</WaH>
+				<CH>2;6;7</CH>
 			</Alarm>
 			<Measurement>
 				<Type>discreet</Type>
@@ -5344,9 +5356,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<High>18446744073709551615</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5380,9 +5394,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5412,9 +5428,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 				</Range>
 				<Units>Packets</Units>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5449,6 +5467,7 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 			<!-- /SuppressValidator 2.9.7 -->
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>0</Normal>
 			</Alarm>
 			<Measurement>
 				<Type>number</Type>
@@ -5482,6 +5501,7 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 			</Display>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>0</Normal>
 			</Alarm>
 			<Measurement>
 				<Type>number</Type>
@@ -5517,9 +5537,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<High>18446744073709551615</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5553,9 +5575,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5585,9 +5609,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 				</Range>
 				<Units>Packets</Units>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5622,6 +5648,7 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 			<!-- /SuppressValidator 2.9.7 -->
 			<Alarm>
 				<Monitored>true</Monitored>
+				<Normal>0</Normal>
 			</Alarm>
 			<Measurement>
 				<Type>number</Type>
@@ -5654,9 +5681,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<High>4294967295</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5688,9 +5717,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<High>4294967295</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5725,9 +5756,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5761,9 +5794,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5798,9 +5833,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5834,9 +5871,11 @@ Discontinuities in the value of this counter can occur at re-initialization of t
 					<Low>0</Low>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -5869,9 +5908,11 @@ The value of Promiscuous Mode does not affect the reception of broadcast and mul
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
@@ -5933,9 +5974,11 @@ The value of Promiscuous Mode does not affect the reception of broadcast and mul
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
@@ -5979,9 +6022,11 @@ An agent which supports write access to this object is required to keep the valu
 					<High>64</High>
 				</Range>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>string</Type>
 			</Measurement>
@@ -6029,9 +6074,6 @@ If no such discontinuities have occurred since the last re-initialization of the
 					<High>4294967295</High>
 				</Range>
 			</Display>
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
 			<Measurement>
 				<Type options="time">number</Type>
 			</Measurement>
@@ -6057,9 +6099,11 @@ By default, this object should have the value Enabled(1) for interfaces which do
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
@@ -6122,6 +6166,10 @@ By default, this object should have the value Enabled(1) for interfaces which do
 			</Interprete>
 			<Alarm>
 				<Monitored>true</Monitored>
+				<CL>0</CL>
+				<Normal>75</Normal>
+				<WaH>90</WaH>
+				<CH>95</CH>
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
@@ -6161,9 +6209,11 @@ Note that this object provides redundant information with ifMauType.  Normally, 
 					</Exception>
 				</Exceptions>
 			</Interprete>
+			<!-- SuppressValidator 2.5.1 Alarm thresholds fully depending on end-user and use-case. -->
 			<Alarm>
 				<Monitored>true</Monitored>
 			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
