@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Skyline.DataMiner.Library.Common.Rates.Tests
+﻿namespace Skyline.DataMiner.Library.Common.Rates.Tests
 {
-    [TestClass]
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+	[TestClass]
     public class InterfaceUtilizationHelperTests
     {
         [TestMethod]

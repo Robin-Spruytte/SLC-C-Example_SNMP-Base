@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Skyline.DataMiner.Library.Common.Rates.Tests
+﻿namespace Skyline.DataMiner.Library.Common.Rates.Tests
 {
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 	[TestClass]
 	public class InterfaceDiscontinuityHelperTests
 	{
