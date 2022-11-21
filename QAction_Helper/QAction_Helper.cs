@@ -1392,15 +1392,15 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Iftableifmtu_1004 {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
 	/// <summary>PID: 1004  | Type: read</summary>
 	public System.Object Iftableifmtu {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
-	/// <summary>PID: 1005  | Type: read</summary>
+	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 4294967295</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftableifspeed_1005 {get { return GetParameter(1005); }set { SetParameter(1005, value); }}
-	/// <summary>PID: 1005  | Type: read</summary>
+	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 4294967295</summary>
 	public System.Object Iftableifspeed {get { return GetParameter(1005); }set { SetParameter(1005, value); }}
-	/// <summary>PID: 1006  | Type: read</summary>
+	/// <summary>PID: 1006  | Type: read | EXCEPTIONS: N/A = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftableifphysaddress_1006 {get { return GetParameter(1006); }set { SetParameter(1006, value); }}
-	/// <summary>PID: 1006  | Type: read</summary>
+	/// <summary>PID: 1006  | Type: read | EXCEPTIONS: N/A = -1</summary>
 	public System.Object Iftableifphysaddress {get { return GetParameter(1006); }set { SetParameter(1006, value); }}
 	/// <summary>PID: 1007  | Type: read | DISCREETS: Up = 1, Down = 2, Testing = 3</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -1412,10 +1412,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Iftableifoperstatus_1008 {get { return GetParameter(1008); }set { SetParameter(1008, value); }}
 	/// <summary>PID: 1008  | Type: read | DISCREETS: Up = 1, Down = 2, Testing = 3, Unknown = 4, Dormant = 5, Not Present = 6, Lower Layer Down = 7</summary>
 	public System.Object Iftableifoperstatus {get { return GetParameter(1008); }set { SetParameter(1008, value); }}
-	/// <summary>PID: 1009  | Type: read</summary>
+	/// <summary>PID: 1009  | Type: read | EXCEPTIONS: No Change = 0</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftableiflastchange_1009 {get { return GetParameter(1009); }set { SetParameter(1009, value); }}
-	/// <summary>PID: 1009  | Type: read</summary>
+	/// <summary>PID: 1009  | Type: read | EXCEPTIONS: No Change = 0</summary>
 	public System.Object Iftableiflastchange {get { return GetParameter(1009); }set { SetParameter(1009, value); }}
 	/// <summary>PID: 1010  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -1599,10 +1599,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Ifxtableifalias_1119 {get { return GetParameter(1119); }set { SetParameter(1119, value); }}
 	/// <summary>PID: 1119  | Type: read</summary>
 	public System.Object Ifxtableifalias {get { return GetParameter(1119); }set { SetParameter(1119, value); }}
-	/// <summary>PID: 1120  | Type: read</summary>
+	/// <summary>PID: 1120  | Type: read | EXCEPTIONS: No Discontinuity = 0</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Ifxtableifcounterdiscontinuitytime_1120 {get { return GetParameter(1120); }set { SetParameter(1120, value); }}
-	/// <summary>PID: 1120  | Type: read</summary>
+	/// <summary>PID: 1120  | Type: read | EXCEPTIONS: No Discontinuity = 0</summary>
 	public System.Object Ifxtableifcounterdiscontinuitytime {get { return GetParameter(1120); }set { SetParameter(1120, value); }}
 	/// <summary>PID: 1121  | Type: read | EXCEPTIONS: N/A = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
