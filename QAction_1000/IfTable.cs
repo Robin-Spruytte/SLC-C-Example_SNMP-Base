@@ -291,31 +291,22 @@
 
 			private void LoadIfTable()
 			{
-				List<uint> columnsToGet = new List<uint>
+				uint[] columnsToGet = new uint[]
 				{
 					Parameter.Iftable.Idx.iftableifindex,
 					Parameter.Iftable.Idx.iftableifinoctets,
 					Parameter.Iftable.Idx.iftableifoutoctets,
 					Parameter.Iftable.Idx.iftableifspeed,
+					Parameter.Iftable.Idx.iftableifratedata,
 				};
 
-				if (!IsSnmpAgentRestarted)
-				{
-					columnsToGet.Add(Parameter.Iftable.Idx.iftableifratedata);
-				}
-
-				object[] ifTableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, columnsToGet.ToArray());
-
+				object[] ifTableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, columnsToGet);
 				Keys = (object[])ifTableData[0];
 				OctetsIn = (object[])ifTableData[1];
 				OctetsOut = (object[])ifTableData[2];
 				Speed = (object[])ifTableData[3];
+				RateData = (object[])ifTableData[4];
 				Discontinuity = new object[Keys.Length];    // Will be filled in via LoadIfXTable
-
-				if (!IsSnmpAgentRestarted)
-				{
-					RateData = (object[])ifTableData[4];
-				}
 			}
 
 			private void LoadIfXTable()
