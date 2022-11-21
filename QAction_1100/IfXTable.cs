@@ -281,7 +281,7 @@
 
 			public void Load()
 			{
-				IsSnmpAgentRestarted = Convert.ToBoolean(Convert.ToInt16(protocol.GetParameter(Parameter.ifxtabletimeoutafterretriesflag)));
+				IsSnmpAgentRestarted = Convert.ToBoolean(Convert.ToInt16(protocol.GetParameter(Parameter.ifxtablesnmpagentrestartflag)));
 
 				uint[] columnsToGet = new uint[]
 				{
