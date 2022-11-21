@@ -581,7 +581,7 @@ This value should include the full name and version identification of the system
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:1001|0-1002|1-1003|2-1004|3-1005|4-1006|5-1007|6-1008|7-1009|8-1010|9-1011|10-1012|11-1013|12-1014|13-1015|14-1016|15-1017|16-1018|17-1022|21-1019|18-1020|19-1021|20,width:100-100-242-120-105-112-79-123-87-120-125-125-82-143-120-130-125-82-100-100-100-141,sort:STRING-STRING-STRING-INT-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-INT-INT,lines:20,filter:true">table</Type>
+				<Type options="tab=columns:1001|0-1002|1-1003|2-1004|3-1005|4-1006|5-1007|6-1008|7-1009|8-1010|9-1011|10-1012|11-1013|12-1014|13-1015|14-1016|15-1017|16-1018|17-1022|21-1019|18-1020|19-1021|20,width:65-200-242-120-105-112-79-123-87-120-125-125-82-143-120-130-125-82-100-100-100-141,sort:STRING-STRING-STRING-INT-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-INT-INT,lines:20,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="1001" trending="false">
@@ -2698,7 +2698,7 @@ Currently only calculated for Ethernet interfaces.
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:1101|0-1102|1-1103|2-1104|3-1105|4-1106|5-1107|6-1108|7-1109|8-1110|9-1111|10-1112|11-1113|12-1114|13-1115|14-1116|15-1117|16-1118|17-1119|18-1120|19-1124|23-1121|20-1122|21-1123|22,width:100-100-131-134-141-144-192-202-213-216-192-212-223-226-156-116-112-122-100-173-100-100-100-141,sort:STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT,lines:20,filter:true">table</Type>
+				<Type options="tab=columns:1101|0-1102|1-1103|2-1104|3-1105|4-1106|5-1107|6-1108|7-1109|8-1110|9-1111|10-1112|11-1113|12-1114|13-1115|14-1116|15-1117|16-1118|17-1119|18-1120|19-1124|23-1121|20-1122|21-1123|22,width:65-200-131-134-141-144-192-202-213-216-192-212-223-226-156-116-112-122-100-173-100-100-100-141,sort:STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT,lines:20,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="1101" trending="false">
@@ -3798,7 +3798,7 @@ Currently only calculated for Ethernet interfaces.
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:1201|0-1202|1-1199|31-1227|26-1203|2-1204|3-1205|4-1219|18-1220|19-1230|29-1231|30-1206|5-1207|6-1208|7-1209|8-1210|9-1211|10-1221|20-1222|21-1212|11-1213|12-1214|13-1215|14-1216|15-1223|22-1224|23-1217|16-1218|17-1225|24-1226|25-1228|27-1229|28,width:0-0-180-180-242-120-138-138-138-141-97-112-79-123-128-192-120-131-134-125-125-143-192-130-141-144-125-125-112-126-173-118,sort:STRING-STRING-STRING-STRING-STRING-INT-INT-INT-INT-INT-STRING-STRING-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-STRING-INT,lines:20,filter:true">table</Type>
+				<Type options="tab=columns:1201|0-1202|1-1199|31-1227|26-1203|2-1204|3-1205|4-1219|18-1220|19-1230|29-1231|30-1206|5-1207|6-1208|7-1209|8-1210|9-1211|10-1221|20-1222|21-1212|11-1213|12-1214|13-1215|14-1216|15-1223|22-1224|23-1217|16-1218|17-1225|24-1226|25-1228|27-1229|28,width:50-0-200-180-242-120-138-138-138-141-97-112-79-123-128-192-120-131-134-125-125-143-192-130-141-144-125-125-112-126-173-118,sort:STRING-STRING-STRING-STRING-STRING-INT-INT-INT-INT-INT-STRING-STRING-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-STRING-INT,lines:20,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="1201" trending="false">
@@ -6215,7 +6215,7 @@ There will be one row in this table for each Ethernet-like interface in the syst
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:1301|0-1302|1,width:100-100,sort:INT-STRING,lines:20,filter:true">table</Type>
+				<Type options="tab=columns:1301|0-1302|1,width:65-100,sort:INT-STRING,lines:20,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="1301" trending="false">
@@ -6304,7 +6304,7 @@ Note that this object provides redundant information with ifMauType.  Normally, 
 			</Condition>
 		</QAction>
 		<QAction id="1192" name="Interface Rate Calculations Method" encoding="csharp" triggers="1192" />
-		<QAction id="1257" name="Interface Table SNMP Set" encoding="csharp" triggers="1257;1275;1277;1279" row="true" />
+		<QAction id="1257" name="Interface Table SNMP Sets" encoding="csharp" triggers="1257;1275;1277;1279" row="true" />
 	</QActions>
 
 	<Groups>

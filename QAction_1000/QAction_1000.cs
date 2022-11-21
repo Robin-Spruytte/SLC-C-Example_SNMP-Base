@@ -12,7 +12,7 @@ public class IfTable
 	/// QAction entry point when table was successfully polled.
 	/// </summary>
 	/// <param name="protocol">Link with SLProtocol process.</param>
-	public static void ProcessTable(SLProtocolExt protocol)
+	public static void ProcessTable(SLProtocol protocol)
 	{
 		try
 		{

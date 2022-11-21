@@ -133,24 +133,10 @@ public class QAction
 			interfaceTableRow.Interfacesbandwidthutilization = Convert.ToDouble(iftable.BandwidthUtilization[getPosition]);
 
 			double dBitRateIn = Convert.ToDouble(iftable.BitRateIn[getPosition]);
-			if (dBitRateIn >= 0)
-			{
-				interfaceTableRow.Interfacesinbitrate = dBitRateIn / Math.Pow(10, 6);	// bps -> Mbps
-			}
-			else
-			{
-				interfaceTableRow.Interfacesinbitrate = -1;
-			}
+			interfaceTableRow.Interfacesinbitrate = dBitRateIn >= 0 ? dBitRateIn / Math.Pow(10, 6) : -1;	// bps -> Mbps
 
 			double dBitRateOut = Convert.ToDouble(iftable.BitRateOut[getPosition]);
-			if (dBitRateOut >= 0)
-			{
-				interfaceTableRow.Interfacesoutbitrate = dBitRateOut / Math.Pow(10, 6); // bps -> Mbps
-			}
-			else
-			{
-				interfaceTableRow.Interfacesoutbitrate = -1;
-			}
+			interfaceTableRow.Interfacesoutbitrate = dBitRateOut >= 0 ? dBitRateOut / Math.Pow(10, 6) : -1; // bps -> Mbps
 		}
 	}
 
@@ -210,24 +196,10 @@ public class QAction
 		interfaceTableRow.Interfacesbandwidthutilization = Convert.ToDouble(ifxtable.BandwidthUtilization[getPosition]);
 
 		double bitrateIn = Convert.ToDouble(ifxtable.BitRateIn[getPosition]);
-		if (bitrateIn >= 0)
-		{
-			interfaceTableRow.Interfacesinbitrate = bitrateIn / Math.Pow(10, 6);    // bps -> Mbps
-		}
-		else
-		{
-			interfaceTableRow.Interfacesinbitrate = -1;
-		}
+		interfaceTableRow.Interfacesinbitrate = bitrateIn >= 0 ? bitrateIn / Math.Pow(10, 6) : -1;		// bps -> Mbps
 
 		double bitrateOut = Convert.ToDouble(ifxtable.BitRateOut[getPosition]);
-		if (bitrateOut >= 0)
-		{
-			interfaceTableRow.Interfacesoutbitrate = bitrateOut / Math.Pow(10, 6);  // bps -> Mbps
-		}
-		else
-		{
-			interfaceTableRow.Interfacesoutbitrate = -1;
-		}
+		interfaceTableRow.Interfacesoutbitrate = bitrateOut >= 0 ? bitrateOut / Math.Pow(10, 6) : -1;   // bps -> Mbps
 	}
 }
 

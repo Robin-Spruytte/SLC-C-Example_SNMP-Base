@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7790627E-CAA1-4A0F-B3ED-26C62147911A}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\readme.txt = Documentation\readme.txt
+		Documentation\SLC SDF SNMP Base.xml = Documentation\SLC SDF SNMP Base.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C033C5D1-ABE5-494B-8B7C-B39574DD5135}"
@@ -48,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_1257", "QAction_125
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FED49DAC-62AA-472A-A271-5188A3C0F624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceUtilizationHelperTests", "InterfaceUtilizationHelperTests\InterfaceUtilizationHelperTests.csproj", "{13C326D1-08B0-49EB-8AEB-8B88062C76D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceUtilizationHelperTests", "InterfaceUtilizationHelperTests\InterfaceUtilizationHelperTests.csproj", "{6731FBC8-FA5B-4C58-9DFC-98192BE153AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceDiscontinuityHelperTests", "InterfaceDiscontinuityHelperTests\InterfaceDiscontinuityHelperTests.csproj", "{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2}"
 EndProject
@@ -94,10 +95,10 @@ Global
 		{2747AB1B-8065-4BEF-A4DF-9F63AF1E3044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2747AB1B-8065-4BEF-A4DF-9F63AF1E3044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2747AB1B-8065-4BEF-A4DF-9F63AF1E3044}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13C326D1-08B0-49EB-8AEB-8B88062C76D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13C326D1-08B0-49EB-8AEB-8B88062C76D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13C326D1-08B0-49EB-8AEB-8B88062C76D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13C326D1-08B0-49EB-8AEB-8B88062C76D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6731FBC8-FA5B-4C58-9DFC-98192BE153AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6731FBC8-FA5B-4C58-9DFC-98192BE153AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6731FBC8-FA5B-4C58-9DFC-98192BE153AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6731FBC8-FA5B-4C58-9DFC-98192BE153AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,7 +118,7 @@ Global
 		{A19CC25A-983F-48B5-8371-7C8F4AA14BA6} = {92603701-31FA-41BC-9C45-C17BDF2BBFCC}
 		{E7BE7B7D-AE00-47C0-885C-BA57AD11A0B5} = {92603701-31FA-41BC-9C45-C17BDF2BBFCC}
 		{2747AB1B-8065-4BEF-A4DF-9F63AF1E3044} = {92603701-31FA-41BC-9C45-C17BDF2BBFCC}
-		{13C326D1-08B0-49EB-8AEB-8B88062C76D8} = {FED49DAC-62AA-472A-A271-5188A3C0F624}
+		{6731FBC8-FA5B-4C58-9DFC-98192BE153AE} = {FED49DAC-62AA-472A-A271-5188A3C0F624}
 		{066A63A5-D3AB-4BCD-8DA2-3BDD50726CB2} = {FED49DAC-62AA-472A-A271-5188A3C0F624}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

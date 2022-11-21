@@ -2,14 +2,18 @@ using System;
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
-/// DataMiner QAction Class: Interface Table SNMP Set.
+/// DataMiner QAction Class: Interface Table SNMP Sets.
 /// </summary>
 public class QAction
 {
 	private const int TriggerIfTable = 1000;
 	private const int TriggerIfXTable = 1100;
 
-	public static void Run(SLProtocolExt protocol)
+	/// <summary>
+	/// The QAction entry point.
+	/// </summary>
+	/// <param name="protocol">Link with SLProtocol process.</param>
+	public static void Run(SLProtocol protocol)
 	{
 		try
 		{
