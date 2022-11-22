@@ -1392,10 +1392,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Iftableifmtu_1004 {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
 	/// <summary>PID: 1004  | Type: read</summary>
 	public System.Object Iftableifmtu {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
-	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 4294967295</summary>
+	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 0, High Speed = 4294967295</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftableifspeed_1005 {get { return GetParameter(1005); }set { SetParameter(1005, value); }}
-	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 4294967295</summary>
+	/// <summary>PID: 1005  | Type: read | EXCEPTIONS: N/A = 0, High Speed = 4294967295</summary>
 	public System.Object Iftableifspeed {get { return GetParameter(1005); }set { SetParameter(1005, value); }}
 	/// <summary>PID: 1006  | Type: read | EXCEPTIONS: N/A = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -1579,10 +1579,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Ifxtableiflinkupdowntrapenable_1115 {get { return GetParameter(1115); }set { SetParameter(1115, value); }}
 	/// <summary>PID: 1115  | Type: read | DISCREETS: Enabled = 1, Disabled = 2</summary>
 	public System.Object Ifxtableiflinkupdowntrapenable {get { return GetParameter(1115); }set { SetParameter(1115, value); }}
-	/// <summary>PID: 1116  | Type: read</summary>
+	/// <summary>PID: 1116  | Type: read | EXCEPTIONS: N/A = 0</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Ifxtableifhighspeed_1116 {get { return GetParameter(1116); }set { SetParameter(1116, value); }}
-	/// <summary>PID: 1116  | Type: read</summary>
+	/// <summary>PID: 1116  | Type: read | EXCEPTIONS: N/A = 0</summary>
 	public System.Object Ifxtableifhighspeed {get { return GetParameter(1116); }set { SetParameter(1116, value); }}
 	/// <summary>PID: 1117  | Type: read | DISCREETS: True = 1, False = 2</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]

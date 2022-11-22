@@ -69,7 +69,7 @@ Any inquiries can be addressed to:
 			<Description>After Startup</Description>
 			<Type>dummy</Type>
 		</Param>
-
+		
 		<Param id="10">
 			<Name>Fixed_0</Name>
 			<Description>Fixed 0</Description>
@@ -94,7 +94,7 @@ Any inquiries can be addressed to:
 				<Value>1</Value>
 			</Interprete>
 		</Param>
-
+		
 		<Param id="91">
 			<Name>sysUptimeTimeoutTrigger</Name>
 			<Type>dummy</Type>
@@ -459,7 +459,7 @@ This value should include the full name and version identification of the system
 				<Type lines="5">string</Type>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="991">
 			<Name>IfTableTimeoutTrigger</Name>
 			<Description>Interface Table Timeout Trigger</Description>
@@ -581,7 +581,7 @@ This value should include the full name and version identification of the system
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:1001|0-1002|1-1003|2-1004|3-1005|4-1006|5-1007|6-1008|7-1009|8-1010|9-1011|10-1012|11-1013|12-1014|13-1015|14-1016|15-1017|16-1018|17-1022|21-1019|18-1020|19-1021|20,width:65-200-242-120-105-112-79-123-87-120-125-125-82-143-120-130-125-82-100-100-100-141,sort:STRING-STRING-STRING-INT-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-INT-INT,lines:20,filter:true">table</Type>
+				<Type options="tab=columns:1001|0-1002|1-1003|2-1004|3-1005|4-1006|5-1007|6-1008|7-1009|8-1010|9-1011|10-1012|11-1013|12-1014|13-1015|14-1016|15-1017|16-1018|17-1022|21-1019|18-1020|19-1021|20,width:65-200-242-120-105-112-79-123-100-120-125-125-82-143-120-130-125-82-100-100-100-141,sort:STRING-STRING-STRING-INT-INT-STRING-STRING-STRING-INT-INT-INT-INT-INT-INT-INT-INT-INT-INT-STRING-INT-INT-INT,lines:20,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="1001" trending="false">
@@ -1913,8 +1913,12 @@ For a sub-layer which has no concept of bandwidth, this object should be zero.]]
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 				<Exceptions>
-					<Exception id="1" value="4294967295">
+					<Exception id="1" value="0">
 						<Display state="disabled">N/A</Display>
+						<Value>0</Value>
+					</Exception>
+					<Exception id="2" value="4294967295">
+						<Display state="disabled">High Speed</Display>
 						<Value>4294967295</Value>
 					</Exception>
 				</Exceptions>
@@ -2573,7 +2577,7 @@ Currently only calculated for Ethernet interfaces.
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="1091">
 			<Name>ifXTableTimeoutTrigger</Name>
 			<Description>InterfaceX Table Timeout Trigger</Description>
@@ -3269,6 +3273,12 @@ For a sub-layer which has no concept of bandwidth, this object should be zero.]]
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
+				<Exceptions>
+					<Exception id="1" value="0">
+						<Display state="disabled">N/A</Display>
+						<Value>0</Value>
+					</Exception>
+				</Exceptions>
 			</Interprete>
 			<SNMP>
 				<Enabled>true</Enabled>
@@ -3609,7 +3619,7 @@ Currently only calculated for Ethernet interfaces.
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="1190">
 			<Name>interfacesRawTablesPageButton</Name>
 			<Type>write</Type>
@@ -3724,7 +3734,7 @@ Currently only calculated for Ethernet interfaces.
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="1199" trending="false">
 			<Name>interfacesDisplayKey</Name>
 			<Description>Key (Interfaces)</Description>
@@ -3777,7 +3787,7 @@ Currently only calculated for Ethernet interfaces.
 				<ColumnOption idx="24" pid="1225" type="retrieved" options="" />
 				<ColumnOption idx="25" pid="1226" type="retrieved" options="" />
 				<ColumnOption idx="26" pid="1227" type="retrieved" options=";save" />
-				<ColumnOption idx="27" pid="1228" type="retrieved" options=";enableHeaderSum;enableHistogram;enableHeatmap" />
+				<ColumnOption idx="27" pid="1228" type="retrieved" options="" />
 				<ColumnOption idx="28" pid="1229" type="retrieved" options="" />
 				<ColumnOption idx="29" pid="1230" type="retrieved" options=";enableHeaderAvg;enableHistogram;enableHeatmap" />
 				<ColumnOption idx="30" pid="1231" type="retrieved" options="" />
@@ -6192,12 +6202,20 @@ By default, this object should have the value Enabled(1) for interfaces which do
 			<Information>
 				<Subtext>
 					<![CDATA[The current mode of operation of the MAC entity.
-- 'N/A' indicates
-- 'Unknown' indicates that the current duplex mode could not be determined.
+'N/A' indicates the Duplex Status can not be known.
+The Duplex Status can currently only be known on Ethernet interfaces.
 
-Management control of the duplex mode is accomplished through the MAU MIB.  When an interface does not support autonegotiation, or when autonegotiation is not enabled, the duplex mode is controlled using ifMauDefaultType.  When autonegotiation is supported and enabled, duplex mode is controlled using ifMauAutoNegAdvertisedBits.  In either case, the currently operating duplex mode is reflected both in this object and in ifMauType.
+'unknown' indicates that the current duplex mode could not be determined by the SNMP Agent on the Ethernet inteface.
 
-Note that this object provides redundant information with ifMauType.  Normally, redundant objects are discouraged.  However, in this instance, it allows a management application to determine the duplex status of an interface without having to know every possible value of ifMauType.  This was felt to be sufficiently valuable to justify the redundancy.]]>
+Management control of the duplex mode of Ethernet interfaces is accomplished through the MAU MIB.
+When an interface does not support autonegotiation, or when autonegotiation is not enabled, the duplex mode is controlled using ifMauDefaultType.
+When autonegotiation is supported and enabled, duplex mode is controlled using ifMauAutoNegAdvertisedBits.
+In either case, the currently operating duplex mode is reflected both in this object and in ifMauType.
+
+Note that this object provides redundant information with ifMauType.
+Normally, redundant objects are discouraged.
+However, in this instance, it allows a management application to determine the duplex status of an interface without having to know every possible value of ifMauType.
+This was felt to be sufficiently valuable to justify the redundancy.]]>
 				</Subtext>
 			</Information>
 			<Type>read</Type>
@@ -6238,7 +6256,7 @@ Note that this object provides redundant information with ifMauType.  Normally, 
 				</Discreets>
 			</Measurement>
 		</Param>
-
+		
 		<Param id="1300" trending="false">
 			<Name>dot3StatsTable</Name>
 			<Description>Ethernet Interfaces</Description>
@@ -6299,11 +6317,18 @@ There will be one row in this table for each Ethernet-like interface in the syst
 			<Description>Duplex Status (Ethernet Interfaces)</Description>
 			<Information>
 				<Subtext>
-					<![CDATA[The current mode of operation of the MAC entity.  'unknown' indicates that the current duplex mode could not be determined.
+					<![CDATA[The current mode of operation of the MAC entity.
+'unknown' indicates that the current duplex mode could not be determined.
 
-Management control of the duplex mode is accomplished through the MAU MIB.  When an interface does not support autonegotiation, or when autonegotiation is not enabled, the duplex mode is controlled using ifMauDefaultType.  When autonegotiation is supported and enabled, duplex mode is controlled using ifMauAutoNegAdvertisedBits.  In either case, the currently operating duplex mode is reflected both in this object and in ifMauType.
+Management control of the duplex mode is accomplished through the MAU MIB.
+When an interface does not support autonegotiation, or when autonegotiation is not enabled, the duplex mode is controlled using ifMauDefaultType.
+When autonegotiation is supported and enabled, duplex mode is controlled using ifMauAutoNegAdvertisedBits.
+In either case, the currently operating duplex mode is reflected both in this object and in ifMauType.
 
-Note that this object provides redundant information with ifMauType.  Normally, redundant objects are discouraged.  However, in this instance, it allows a management application to determine the duplex status of an interface without having to know every possible value of ifMauType.  This was felt to be sufficiently valuable to justify the redundancy.]]>
+Note that this object provides redundant information with ifMauType.
+Normally, redundant objects are discouraged.
+However, in this instance, it allows a management application to determine the duplex status of an interface without having to know every possible value of ifMauType.
+This was felt to be sufficiently valuable to justify the redundancy.]]>
 				</Subtext>
 			</Information>
 			<Type>read</Type>
