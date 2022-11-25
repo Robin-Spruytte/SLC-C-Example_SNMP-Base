@@ -8,11 +8,11 @@
 
 	public class InterfaceRateData64
 	{
-		public SnmpRate64 BitrateInData { get; set; }
+		public SnmpRate64 BitrateIn { get; set; }
 
-		public SnmpRate64 BitrateOutData { get; set; }
+		public SnmpRate64 BitrateOut { get; set; }
 
-		public string PreviousDiscontinuity { get; set; }
+		public string DiscontinuityTime { get; set; }
 
 		public static InterfaceRateData64 FromJsonString(string serializedIfxRateData, TimeSpan minDelta, TimeSpan maxDelta, RateBase rateBase = RateBase.Second)
 		{
@@ -20,9 +20,9 @@
 			{
 				return new InterfaceRateData64
 				{
-					BitrateInData = SnmpRate64.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
-					BitrateOutData = SnmpRate64.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
-					PreviousDiscontinuity = String.Empty,
+					BitrateIn = SnmpRate64.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
+					BitrateOut = SnmpRate64.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
+					DiscontinuityTime = String.Empty,
 				};
 			}
 

@@ -43,8 +43,8 @@
 
 				InterfaceRateData32 rateData = InterfaceRateData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
 
-				rateData.BitrateInData.BufferDelta(snmpDeltaHelper, key);
-				rateData.BitrateOutData.BufferDelta(snmpDeltaHelper, key);
+				rateData.BitrateIn.BufferDelta(snmpDeltaHelper, key);
+				rateData.BitrateOut.BufferDelta(snmpDeltaHelper, key);
 
 				iftableSetter.SetColumnsData[Parameter.Iftable.tablePid].Add(key);
 				iftableSetter.SetColumnsData[Parameter.Iftable.Pid.iftableifratedata].Add(rateData.ToJsonString());
@@ -176,20 +176,20 @@
 			string serializedIfRateData = Convert.ToString(iftableGetter.RateData[getPosition]);
 			InterfaceRateData32 rateData = InterfaceRateData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
 
-			string currentDiscontinuity = Convert.ToString(iftableGetter.Discontinuity[getPosition]);
-			bool discontinuity = Interface.HasDiscontinuity(currentDiscontinuity, rateData.PreviousDiscontinuity);
+			string discontinuityTime = Convert.ToString(iftableGetter.Discontinuity[getPosition]);
+			bool discontinuity = Interface.HasDiscontinuity(discontinuityTime, rateData.DiscontinuityTime);
 
 			if (iftableGetter.IsSnmpAgentRestarted || discontinuity)
 			{
-				rateData.BitrateInData = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
-				rateData.BitrateOutData = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
+				rateData.BitrateIn = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
+				rateData.BitrateOut = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
 			}
 
 			uint octetsIn = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsIn[getPosition]));
-			bitrateIn = CalculateBitRate(key, octetsIn, snmpDeltaHelper, rateData.BitrateInData);
+			bitrateIn = CalculateBitRate(key, octetsIn, snmpDeltaHelper, rateData.BitrateIn);
 
 			uint octetsOut = SafeConvert.ToUInt32(Convert.ToDouble(iftableGetter.OctetsOut[getPosition]));
-			bitrateOut = CalculateBitRate(key, octetsOut, snmpDeltaHelper, rateData.BitrateOutData);
+			bitrateOut = CalculateBitRate(key, octetsOut, snmpDeltaHelper, rateData.BitrateOut);
 
 			iftableSetter.SetColumnsData[Parameter.Iftable.Pid.iftableifinbitrate].Add(bitrateIn);
 			iftableSetter.SetColumnsData[Parameter.Iftable.Pid.iftableifoutbitrate].Add(bitrateOut);
