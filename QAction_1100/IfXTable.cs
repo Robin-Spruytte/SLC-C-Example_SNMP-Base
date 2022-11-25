@@ -3,6 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 
+	using Skyline.DataMiner.Library.Common.Interfaces;
 	using Skyline.DataMiner.Library.Common.Rates;
 	using Skyline.DataMiner.Library.Common.SafeConverters;
 	using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
@@ -175,7 +176,7 @@
 			InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
 
 			string currentDiscontinuity = Convert.ToString(ifxTableGetter.Discontinuity[getPosition]);
-			bool discontinuity = InterfaceDiscontinuityHelper.HasDiscontinuity(currentDiscontinuity, rateData.PreviousDiscontinuity);
+			bool discontinuity = Interface.HasDiscontinuity(currentDiscontinuity, rateData.PreviousDiscontinuity);
 
 			if (ifxTableGetter.IsSnmpAgentRestarted || discontinuity)
 			{
@@ -202,7 +203,7 @@
 				? duplexStatuses[key]
 				: DuplexStatus.NotInitialized;
 
-			double utilization = InterfaceUtilizationHelper.CalculateUtilization(bitrateIn, bitrateOut, speedValue, duplexStatus);
+			double utilization = Interface.CalculateUtilization(bitrateIn, bitrateOut, speedValue, duplexStatus);
 
 			ifxTableSetter.SetColumnsData[Parameter.Ifxtable.Pid.ifxtableifbandwidthutilization].Add(utilization);
 		}

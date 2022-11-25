@@ -47,7 +47,7 @@ Any inquiries can be addressed to:
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>SLC SDF SNMP Base</Name>
 	<Description>SLC SDF SNMP Base DataMiner driver</Description>
-	<Version>1.0.0.1</Version>
+	<Version>1.0.0.2</Version>
 	<IntegrationID>DMS-DRV-0000</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Skyline</Vendor>
@@ -6740,6 +6740,19 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 										</Provider>
 										<Changes>
 											<NewFeature>Initial version</NewFeature>
+										</Changes>
+										<References>
+											<TaskId>172808</TaskId>
+										</References>
+									</MinorVersion>
+									<MinorVersion id="2" basedOn="1.0.0.1">
+										<Date>2022-11-25</Date>
+										<Provider>
+											<Author>SVD</Author>
+											<Company>Skyline Communications</Company>
+										</Provider>
+										<Changes>
+											<Change>Interface logic moved to class library</Change>
 										</Changes>
 										<References>
 											<TaskId>172808</TaskId>

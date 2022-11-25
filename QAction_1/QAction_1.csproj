@@ -49,10 +49,8 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceDiscontinuityHelper.cs" />
     <Compile Include="InterfaceRateData32.cs" />
     <Compile Include="InterfaceRateData64.cs" />
-    <Compile Include="InterfaceUtilizationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolExtensions.cs" />
   </ItemGroup>
@@ -64,7 +62,7 @@
       <Version>10.0.10</Version>
     </PackageReference>
     <PackageReference Include="SLC.Lib.Protocol">
-      <Version>1.2.2.6</Version>
+      <Version>1.2.2.6-dcp172808InterfaceUtilization.1</Version>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.1.118</Version>
@@ -75,7 +73,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="1" />
+      <UserProperties DisLinkId="1" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
