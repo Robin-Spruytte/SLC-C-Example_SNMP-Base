@@ -40,7 +40,7 @@
 				string key = Convert.ToString(ifxtableGetter.Keys[i]);
 				string serializedIfxRateData = Convert.ToString(ifxtableGetter.IfRateData[i]);
 
-				InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
+				InterfaceData64 rateData = InterfaceData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
 
 				rateData.BitrateIn.BufferDelta(snmpDeltaHelper, key);
 				rateData.BitrateOut.BufferDelta(snmpDeltaHelper, key);
@@ -173,7 +173,7 @@
 			string key = Convert.ToString(ifxTableGetter.Keys[getPosition]);
 
 			string serializedIfxRateData = Convert.ToString(ifxTableGetter.RateData[getPosition]);
-			InterfaceRateData64 rateData = InterfaceRateData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
+			InterfaceData64 rateData = InterfaceData64.FromJsonString(serializedIfxRateData, MinDelta, MaxDelta);
 
 			string discontinuityTime = Convert.ToString(ifxTableGetter.Discontinuity[getPosition]);
 			bool discontinuity = Interface.HasDiscontinuity(discontinuityTime, rateData.DiscontinuityTime);

@@ -7,7 +7,7 @@
 	using Skyline.DataMiner.Integrations.Rates.Common;
 	using Skyline.DataMiner.Integrations.Rates.Protocol;
 
-	public class InterfaceRateData32
+	public class InterfaceData32
 	{
 		public SnmpRate32 BitrateIn { get; set; }
 
@@ -15,11 +15,11 @@
 
 		public string DiscontinuityTime { get; set; }
 
-		public static InterfaceRateData32 FromJsonString(string serializedIfxRateData, TimeSpan minDelta, TimeSpan maxDelta, RateBase rateBase = RateBase.Second)
+		public static InterfaceData32 FromJsonString(string serializedIfxRateData, TimeSpan minDelta, TimeSpan maxDelta, RateBase rateBase = RateBase.Second)
 		{
 			if (String.IsNullOrWhiteSpace(serializedIfxRateData))
 			{
-				return new InterfaceRateData32
+				return new InterfaceData32
 				{
 					BitrateIn = SnmpRate32.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
 					BitrateOut = SnmpRate32.FromJsonString(String.Empty, minDelta, maxDelta, rateBase),
@@ -27,7 +27,7 @@
 				};
 			}
 
-			return JsonConvert.DeserializeObject<InterfaceRateData32>(serializedIfxRateData);
+			return JsonConvert.DeserializeObject<InterfaceData32>(serializedIfxRateData);
 		}
 
 		public string ToJsonString()

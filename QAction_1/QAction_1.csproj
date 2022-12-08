@@ -8,7 +8,7 @@
     <ProjectGuid>{C900CC47-7C13-4F80-9238-469698E47510}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QAction_1</RootNamespace>
+    <RootNamespace>Skyline.Protocol</RootNamespace>
     <AssemblyName>QAction_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,8 +49,8 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceRateData32.cs" />
-    <Compile Include="InterfaceRateData64.cs" />
+    <Compile Include="Interface\InterfaceData32.cs" />
+    <Compile Include="Interface\InterfaceData64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolExtensions.cs" />
   </ItemGroup>

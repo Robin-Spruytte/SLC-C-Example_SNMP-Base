@@ -41,7 +41,7 @@
 				string key = Convert.ToString(iftableGetter.Keys[i]);
 				string serializedIfRateData = Convert.ToString(iftableGetter.IfRateData[i]);
 
-				InterfaceRateData32 rateData = InterfaceRateData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
+				InterfaceData32 rateData = InterfaceData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
 
 				rateData.BitrateIn.BufferDelta(snmpDeltaHelper, key);
 				rateData.BitrateOut.BufferDelta(snmpDeltaHelper, key);
@@ -174,7 +174,7 @@
 			string key = Convert.ToString(iftableGetter.Keys[getPosition]);
 
 			string serializedIfRateData = Convert.ToString(iftableGetter.RateData[getPosition]);
-			InterfaceRateData32 rateData = InterfaceRateData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
+			InterfaceData32 rateData = InterfaceData32.FromJsonString(serializedIfRateData, MinDelta, MaxDelta);
 
 			string discontinuityTime = Convert.ToString(iftableGetter.Discontinuity[getPosition]);
 			bool discontinuity = Interface.HasDiscontinuity(discontinuityTime, rateData.DiscontinuityTime);
