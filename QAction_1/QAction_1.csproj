@@ -56,13 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
+      <Version>13.0.2</Version>
     </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol">
       <Version>10.0.10</Version>
     </PackageReference>
-    <PackageReference Include="SLC.Lib.Protocol">
-      <Version>1.2.2.8</Version>
+    <PackageReference Include="Skyline.DataMiner.Integrations.Rates.Protocol">
+      <Version>1.0.0-10.1.0.1.0.0.X.3</Version>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.1.118</Version>

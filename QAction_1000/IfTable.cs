@@ -4,12 +4,12 @@
 	using System.Collections.Generic;
 	using System.Linq;
 
-	using Skyline.DataMiner.Library.Common.Interfaces;
-	using Skyline.DataMiner.Library.Common.Rates;
+	using Skyline.DataMiner.Integrations.Rates.Common.Interfaces;
+	using Skyline.DataMiner.Integrations.Rates.Protocol;
 	using Skyline.DataMiner.Library.Common.SafeConverters;
-	using Skyline.DataMiner.Library.Protocol.Snmp.Rates;
 	using Skyline.DataMiner.Scripting;
 	using Skyline.Protocol.Extensions;
+	using Skyline.Protocol.Interface;
 
 	public class IfTableTimeoutProcessor
 	{
