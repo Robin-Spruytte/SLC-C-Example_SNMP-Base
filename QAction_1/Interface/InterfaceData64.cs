@@ -4,8 +4,8 @@
 
 	using Newtonsoft.Json;
 
-	using Skyline.DataMiner.Integrations.Rates.Common;
-	using Skyline.DataMiner.Integrations.Rates.Protocol;
+	using Skyline.DataMiner.Utils.Rates.Common;
+	using Skyline.DataMiner.Utils.Rates.Protocol;
 
 	public class InterfaceData64
 	{

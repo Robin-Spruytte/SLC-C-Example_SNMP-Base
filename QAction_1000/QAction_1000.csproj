@@ -61,13 +61,16 @@
       <Version>13.0.2</Version>
     </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol">
-      <Version>10.0.0.5</Version>
+      <Version>10.1.0.6</Version>
     </PackageReference>
-    <PackageReference Include="Skyline.DataMiner.Integrations.Rates.Protocol">
-      <Version>1.0.0-10.1.0.1.0.0.X.3</Version>
+    <PackageReference Include="Skyline.DataMiner.Utils.Interfaces">
+      <Version>1.0.0-1.0.0.X.3</Version>
     </PackageReference>
-    <PackageReference Include="SLC.Lib.Protocol">
-      <Version>1.2.2.8</Version>
+    <PackageReference Include="Skyline.DataMiner.Utils.Rates.Protocol">
+      <Version>1.0.0-1.0.0.X.4</Version>
+    </PackageReference>
+    <PackageReference Include="Skyline.DataMiner.Utils.SafeConverters">
+      <Version>1.0.0-1.0.0.X.3</Version>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.1.118</Version>
@@ -78,7 +81,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="1000" />
+      <UserProperties DisLinkId="1000" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

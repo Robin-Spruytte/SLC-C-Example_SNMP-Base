@@ -1,7 +1,7 @@
 using System;
 
-using Skyline.DataMiner.Integrations.Rates.Protocol;
 using Skyline.DataMiner.Scripting;
+using Skyline.DataMiner.Utils.SNMP;
 
 /// <summary>
 /// DataMiner QAction Class: After Startup.

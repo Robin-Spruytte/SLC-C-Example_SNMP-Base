@@ -4,10 +4,11 @@
 	using System.Collections.Generic;
 	using System.Linq;
 
-	using Skyline.DataMiner.Integrations.Rates.Common.Interfaces;
-	using Skyline.DataMiner.Integrations.Rates.Protocol;
-	using Skyline.DataMiner.Library.Common.SafeConverters;
 	using Skyline.DataMiner.Scripting;
+	using Skyline.DataMiner.Utils.Interfaces;
+	using Skyline.DataMiner.Utils.Rates.Protocol;
+	using Skyline.DataMiner.Utils.SafeConverters;
+	using Skyline.DataMiner.Utils.SNMP;
 	using Skyline.Protocol.Extensions;
 	using Skyline.Protocol.Interface;
 
