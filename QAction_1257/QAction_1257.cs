@@ -9,6 +9,7 @@ public class QAction
 {
 	private const int TriggerIfTable = 1000;
 	private const int TriggerIfXTable = 1100;
+	private const int TriggerInterfaceMerge = 1191;
 
 	/// <summary>
 	/// The QAction entry point.
@@ -32,7 +33,6 @@ public class QAction
 					// Note: We poll the entire table so the bit rate calculation is triggered again using the correct values.
 					// Polling just the cell or row could lead to wrong calculations.
 					protocol.CheckTrigger(TriggerIfTable);
-					protocol.CheckTrigger(TriggerIfXTable);
 					break;
 
 				case Parameter.Write.interfacespromiscuousmode:
@@ -66,6 +66,8 @@ public class QAction
 						LogLevel.NoLogging);
 					break;
 			}
+
+			protocol.CheckTrigger(TriggerInterfaceMerge);
 		}
 		catch (Exception ex)
 		{

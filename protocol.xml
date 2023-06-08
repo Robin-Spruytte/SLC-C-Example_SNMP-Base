@@ -6424,12 +6424,38 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 				<Param>1000</Param>
 			</Content>
 		</Group>
+		<Group id="1001">
+			<Name>pollSysUptimeAndIfTable</Name>
+			<Description>SysUptime And 32-bit Interfaces Table</Description>
+			<Type>poll action</Type>
+			<Content>
+				<!--This group & action are making sure we always detect SNMP agent restarts before calculating counter rates-->
+				<Action>1000</Action>
+			</Content>
+		</Group>
 		<Group id="1100">
 			<Name>ifXTable</Name>
 			<Description>64-bit Interfaces Table</Description>
 			<Type>poll</Type>
 			<Content>
 				<Param>1100</Param>
+			</Content>
+		</Group>
+		<Group id="1101">
+			<Name>pollSysUptimeAndIfXTable</Name>
+			<Description>SysUptime And 64-bit Interfaces Table</Description>
+			<Type>poll action</Type>
+			<Content>
+				<!--This group & action are making sure we always detect SNMP agent restarts before calculating counter rates-->
+				<Action>1100</Action>
+			</Content>
+		</Group>
+		<Group id="1191">
+			<Name>interfaceTableMergeAction</Name>
+			<Description>Merge Interface Tables</Description>
+			<Type>poll action</Type>
+			<Content>
+				<Action>1191</Action>
 			</Content>
 		</Group>
 		<Group id="1300">
@@ -6586,6 +6612,13 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 				<Id>1100</Id>
 			</Content>
 		</Trigger>
+		<Trigger id="111">
+			<Name>MergeInterfaceTableCheckTrigger</Name>
+			<Type>action</Type>
+			<Content>
+				<Id>1190</Id>
+			</Content>
+		</Trigger>
 	</Triggers>
 
 	<Actions>
@@ -6641,7 +6674,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 		</Action>
 		<Action id="1000">
 			<Name>IfTable Execute Next</Name>
-			<On id="1000">group</On>
+			<On id="1000;1">group</On>
 			<Type>execute next</Type>
 		</Action>
 
@@ -6666,13 +6699,16 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			<Type>run actions</Type>
 		</Action>
 		<Action id="1100">
-			<!--'execute' action is used instead of 'execute next' to make sure group 200 is polled after group 100.
-			this is needed since the aggregation of interface tables is done after group 200.-->
-			<Name>IfXTable Execute</Name>
-			<On id="1100">group</On>
-			<Type>execute</Type>
+			<Name>IfXTable Execute Next</Name>
+			<On id="1100;1">group</On>
+			<Type>execute next</Type>
 		</Action>
 
+		<Action id="1190">
+			<Name>Interface Table Merge Execute</Name>
+			<On id="1191">group</On>
+			<Type>execute</Type>
+		</Action>
 		<Action id="1191">
 			<Name>Interface Table Merge</Name>
 			<On id="1191">parameter</On>
@@ -6697,8 +6733,10 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 				<Group>1300</Group>
 				<!--ifXTable needs to be polled prior to ifTable 
 						so that ifXTableIfCounterDiscontinuityTime is available when calculating ifTable rates.-->
-				<Group>1100</Group>
-				<Group>1000</Group>
+				<Group>1101</Group>
+				<Group>1001</Group>
+				<Group>1191</Group>
+
 			</Content>
 		</Timer>
 		<Timer id="3">
