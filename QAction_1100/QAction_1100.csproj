@@ -67,7 +67,7 @@
       <Version>1.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Utils.Rates.Protocol">
-      <Version>1.0.0.1</Version>
+      <Version>1.0.0.2</Version>
     </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Utils.SafeConverters">
       <Version>1.0.0.1</Version>
@@ -81,7 +81,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="1100" />
+      <UserProperties DisLinkId="1100" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

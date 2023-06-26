@@ -68,7 +68,7 @@ public class QAction
 		}
 		catch (Exception ex)
 		{
-			protocol.Log("QA" + protocol.QActionID + "|Run|Error: " + ex, LogType.Error, LogLevel.NoLogging);
+			protocol.Log($"QA{protocol.QActionID}|Run|Error: {ex}", LogType.Error, LogLevel.NoLogging);
 		}
 	}
 

@@ -61,7 +61,7 @@ public class QAction
 
 				default:
 					protocol.Log(
-						"QA" + protocol.QActionID + "|Run|QAction triggered by unexpected param '" + triggerPid + "'",
+						$"QA{protocol.QActionID}|Run|QAction triggered by unexpected param '{triggerPid}'",
 						LogType.Error,
 						LogLevel.NoLogging);
 					break;
@@ -71,7 +71,7 @@ public class QAction
 		}
 		catch (Exception ex)
 		{
-			protocol.Log("QA" + protocol.QActionID + "|Run|Error: " + ex, LogType.Error, LogLevel.NoLogging);
+			protocol.Log($"QA{protocol.QActionID}|Run|Error: {ex}", LogType.Error, LogLevel.NoLogging);
 		}
 	}
 }

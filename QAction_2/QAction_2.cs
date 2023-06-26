@@ -20,13 +20,15 @@ public static class QAction
 			CalculationMethod rateCalculationsMethod = (CalculationMethod)Convert.ToInt32(protocol.GetParameter(Parameter.interfacesratecalculationsmethod));
 			if (rateCalculationsMethod == CalculationMethod.Accurate)
 			{
-				SnmpDeltaHelper.UpdateRateDeltaTracking(protocol, groupId: 1000, CalculationMethod.Accurate);
-				SnmpDeltaHelper.UpdateRateDeltaTracking(protocol, groupId: 1100, CalculationMethod.Accurate);
+				SnmpDeltaHelper.UpdateRateDeltaTracking(
+					protocol,
+					tablePids: new[] { 1000, 1100 },
+					CalculationMethod.Accurate);
 			}
 		}
 		catch (Exception ex)
 		{
-			protocol.Log("QA" + protocol.QActionID + "|" + protocol.GetTriggerParameter() + "|Run|Exception thrown:" + Environment.NewLine + ex, LogType.Error, LogLevel.NoLogging);
+			protocol.Log($"QA{protocol.QActionID}|{protocol.GetTriggerParameter()}|Run|Exception thrown:{Environment.NewLine}{ex}", LogType.Error, LogLevel.NoLogging);
 		}
 	}
 }

@@ -41,7 +41,7 @@ namespace Skyline.Protocol.Extensions
 				if (setColumnsData.ElementAt(i).Value.Count != rowCount)
 				{
 					protocol.Log(
-						"QA" + protocol.QActionID + "|SetColumns|SetColumns on table '" + setColumnsData.Keys.ToArray()[0] + "' failed. Not all columns contain the same number of rows.",
+						$"QA{protocol.QActionID}|SetColumns|SetColumns on table '{setColumnsData.Keys.ToArray()[0]}' failed. Not all columns contain the same number of rows.",
 						LogType.Error,
 						LogLevel.NoLogging);
 
