@@ -6425,7 +6425,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			</Content>
 		</Group>
 		<Group id="1001">
-			<Name>pollSysUptimeAndIfTable</Name>
+			<Name>IfTableAndSysUptime</Name>
 			<Description>SysUptime And 32-bit Interfaces Table</Description>
 			<Type>poll action</Type>
 			<Content>
@@ -6442,7 +6442,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			</Content>
 		</Group>
 		<Group id="1101">
-			<Name>pollSysUptimeAndIfXTable</Name>
+			<Name>IfXTableAndSysUptime</Name>
 			<Description>SysUptime And 64-bit Interfaces Table</Description>
 			<Type>poll action</Type>
 			<Content>
@@ -6613,7 +6613,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			</Content>
 		</Trigger>
 		<Trigger id="1191">
-			<Name>MergeInterfaceTableCheckTrigger</Name>
+			<Name>InterfaceTableMergeCheckTrigger</Name>
 			<Type>action</Type>
 			<Content>
 				<Id>1190</Id>
