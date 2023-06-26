@@ -47,7 +47,7 @@ Any inquiries can be addressed to:
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>SLC SDF SNMP Base</Name>
 	<Description>SLC SDF SNMP Base DataMiner driver</Description>
-	<Version>1.0.0.3</Version>
+	<Version>1.0.0.4</Version>
 	<IntegrationID>DMS-DRV-0000</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Skyline</Vendor>
@@ -69,7 +69,7 @@ Any inquiries can be addressed to:
 			<Description>After Startup</Description>
 			<Type>dummy</Type>
 		</Param>
-		
+
 		<Param id="10">
 			<Name>Fixed_0</Name>
 			<Description>Fixed 0</Description>
@@ -94,7 +94,7 @@ Any inquiries can be addressed to:
 				<Value>1</Value>
 			</Interprete>
 		</Param>
-		
+
 		<Param id="91">
 			<Name>sysUptimeTimeoutTrigger</Name>
 			<Type>dummy</Type>
@@ -459,7 +459,7 @@ This value should include the full name and version identification of the system
 				<Type lines="5">string</Type>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="991">
 			<Name>IfTableTimeoutTrigger</Name>
 			<Description>Interface Table Timeout Trigger</Description>
@@ -2577,7 +2577,7 @@ Currently only calculated for Ethernet interfaces.
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="1091">
 			<Name>ifXTableTimeoutTrigger</Name>
 			<Description>InterfaceX Table Timeout Trigger</Description>
@@ -3619,7 +3619,7 @@ Currently only calculated for Ethernet interfaces.
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="1190">
 			<Name>interfacesRawTablesPageButton</Name>
 			<Type>write</Type>
@@ -3734,7 +3734,7 @@ Currently only calculated for Ethernet interfaces.
 				</Discreets>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="1199" trending="false">
 			<Name>interfacesDisplayKey</Name>
 			<Description>Key (Interfaces)</Description>
@@ -6256,7 +6256,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 				</Discreets>
 			</Measurement>
 		</Param>
-		
+
 		<Param id="1300" trending="false">
 			<Name>dot3StatsTable</Name>
 			<Description>Ethernet Interfaces</Description>
@@ -6612,7 +6612,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 				<Id>1100</Id>
 			</Content>
 		</Trigger>
-		<Trigger id="111">
+		<Trigger id="1191">
 			<Name>MergeInterfaceTableCheckTrigger</Name>
 			<Type>action</Type>
 			<Content>
@@ -6804,6 +6804,20 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 										</Provider>
 										<Changes>
 											<Change>Use specific small packages rather than bulky Class Library.</Change>
+										</Changes>
+										<References>
+											<TaskId>198352</TaskId>
+										</References>
+									</MinorVersion>
+									<MinorVersion id="4" basedOn="1.0.0.3">
+										<Date>2023-06-26</Date>
+										<Provider>
+											<Author>RSP</Author>
+											<Company>Skyline Communications</Company>
+										</Provider>
+										<Changes>
+											<Fix>Race condition on uptime on device restart</Fix>
+											<Change>Moved merging tables logic to dedicated trigger.</Change>
 										</Changes>
 										<References>
 											<TaskId>198352</TaskId>
