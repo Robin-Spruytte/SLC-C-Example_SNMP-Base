@@ -6366,12 +6366,10 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 	</Params>
 
 	<QActions>
-		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile">
-		</QAction>
-		<QAction id="2" name="After Startup" encoding="csharp" triggers="2">
-		</QAction>
-		<QAction id="91" name="Process SysUptime" encoding="csharp" triggers="91;93" entryPoint="SysUptime.ProcessTimeout;SysUptime.ProcessNewValue">
-		</QAction>
+		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
+		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
+		
+		<QAction id="91" name="Process SysUptime" encoding="csharp" triggers="91;93" entryPoint="SysUptime.ProcessTimeout;SysUptime.ProcessNewValue" />
 
 		<QAction id="1000" name="If Table Bit Rate" encoding="csharp" triggers="991;993" entryPoint="IfTable.ProcessTimeout;IfTable.ProcessTable" />
 		<QAction id="1100" name="IfX Table Bit Rate" encoding="csharp" triggers="1091;1093" entryPoint="IfxTable.ProcessTimeout;IfxTable.ProcessTable" />
@@ -6554,8 +6552,6 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			<Type>action</Type>
 			<Content>
 				<Id>993</Id>
-				<Id>1191</Id>
-				<Id else="true">1191</Id>
 			</Content>
 		</Trigger>
 		<Trigger id="1000">
@@ -6731,12 +6727,13 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			<Interval>75</Interval>
 			<Content>
 				<Group>1300</Group>
+				
 				<!--ifXTable needs to be polled prior to ifTable 
 						so that ifXTableIfCounterDiscontinuityTime is available when calculating ifTable rates.-->
 				<Group>1101</Group>
 				<Group>1001</Group>
+			
 				<Group>1191</Group>
-
 			</Content>
 		</Timer>
 		<Timer id="3">
@@ -6816,7 +6813,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 											<Company>Skyline Communications</Company>
 										</Provider>
 										<Changes>
-											<Fix>Race condition on uptime on device restart</Fix>
+											<Fix>Race condition on uptime on device restart.</Fix>
 											<Change>Moved merging tables logic to dedicated trigger.</Change>
 										</Changes>
 										<References>
