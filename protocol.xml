@@ -46,7 +46,7 @@ Any inquiries can be addressed to:
 
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>Skyline Example SNMP Base</Name>
-	<Description>SLC SDF SNMP Base DataMiner driver</Description>
+	<Description>Skyline Example - SNMP Base DataMiner connector</Description>
 	<Version>1.0.0.4</Version>
 	<IntegrationID>DMS-DRV-9041</IntegrationID>
 	<Provider>Skyline Communications</Provider>
@@ -60,7 +60,7 @@ Any inquiries can be addressed to:
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
-		<MinimumRequiredVersion>10.0.10.0 - 9454</MinimumRequiredVersion>
+		<MinimumRequiredVersion>10.2.0.0 - 11517</MinimumRequiredVersion>
 	</Compliancies>
 
 	<Params>
@@ -6368,7 +6368,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
 		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
-		
+
 		<QAction id="91" name="Process SysUptime" encoding="csharp" triggers="91;93" entryPoint="SysUptime.ProcessTimeout;SysUptime.ProcessNewValue" />
 
 		<QAction id="1000" name="If Table Bit Rate" encoding="csharp" triggers="991;993" entryPoint="IfTable.ProcessTimeout;IfTable.ProcessTable" />
@@ -6727,12 +6727,12 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			<Interval>75</Interval>
 			<Content>
 				<Group>1300</Group>
-				
+
 				<!--ifXTable needs to be polled prior to ifTable 
 						so that ifXTableIfCounterDiscontinuityTime is available when calculating ifTable rates.-->
 				<Group>1101</Group>
 				<Group>1001</Group>
-			
+
 				<Group>1191</Group>
 			</Content>
 		</Timer>

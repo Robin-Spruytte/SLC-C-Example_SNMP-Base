@@ -1,10 +1,10 @@
-# Example Matrix Connector
+# Example SNMP Base Connector
 
-This repository serves as a guide on developing a Matrix Connector.
+This repository serves as a guide on developing an SNMP Connector.
 
 ## Simulation Data
 
-The input data is sourced from a simulation located in the **Simulation** folder at the root of this repository.
+The input data is sourced from a simulation located in the **Documentation** folder at the root of this repository.
 
 To execute the simulation, utilize the simulator tool available in the folder `C:\Skyline DataMiner\Tools\QADeviceSimulator`. If you don't have it installed, you can download the tool from [DataMiner Dojo](https://community.dataminer.services/download/skyline-device-simulator/).
 
