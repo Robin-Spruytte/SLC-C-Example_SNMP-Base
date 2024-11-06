@@ -10,9 +10,9 @@ public static class Parameter
 {
 	/// <summary>PID: 92 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int sysuptimetimeoutafterretriesflag_92 = 92;
+	public const int sysuptimegroupresultafterretries_92 = 92;
 	/// <summary>PID: 92 | Type: read</summary>
-	public const int sysuptimetimeoutafterretriesflag = 92;
+	public const int sysuptimegroupresultafterretries = 92;
 	/// <summary>PID: 95 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int sysuptimebuffer_95 = 95;
@@ -50,9 +50,9 @@ public static class Parameter
 	public const int sysdescr = 108;
 	/// <summary>PID: 992 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int iftabletimeoutafterretriesflag_992 = 992;
+	public const int iftablegroupresultafterretries_992 = 992;
 	/// <summary>PID: 992 | Type: read</summary>
-	public const int iftabletimeoutafterretriesflag = 992;
+	public const int iftablegroupresultafterretries = 992;
 	/// <summary>PID: 995 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int iftablesnmpagentrestartflag_995 = 995;
@@ -1072,8 +1072,8 @@ public interface SLProtocolExt : SLProtocol
 	object Fixed_0__fixed { get; set; }
 	object Fixed_1__fixed { get; set; }
 	object Sysuptimetimeouttrigger_dummy { get; set; }
-	object Sysuptimetimeoutafterretriesflag_92 { get; set; }
-	object Sysuptimetimeoutafterretriesflag { get; set; }
+	object Sysuptimegroupresultafterretries_92 { get; set; }
+	object Sysuptimegroupresultafterretries { get; set; }
 	object Sysuptimeaftergrouptrigger_dummy { get; set; }
 	object Sysuptimebuffer_95 { get; set; }
 	object Sysuptimebuffer { get; set; }
@@ -1093,8 +1093,8 @@ public interface SLProtocolExt : SLProtocol
 	object Sysdescr_108 { get; set; }
 	object Sysdescr { get; set; }
 	object Iftabletimeouttrigger_dummy { get; set; }
-	object Iftabletimeoutafterretriesflag_992 { get; set; }
-	object Iftabletimeoutafterretriesflag { get; set; }
+	object Iftablegroupresultafterretries_992 { get; set; }
+	object Iftablegroupresultafterretries { get; set; }
 	object Iftablecalculatebitrates_dummy { get; set; }
 	object Iftablesnmpagentrestartflag_995 { get; set; }
 	object Iftablesnmpagentrestartflag { get; set; }
@@ -1302,11 +1302,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Fixed_1__fixed {get { return GetParameter(11); }set { SetParameter(11, value); }}
 	/// <summary>PID: 91  | Type: dummy</summary>
 	public System.Object Sysuptimetimeouttrigger_dummy {get { return GetParameter(91); }set { SetParameter(91, value); }}
-	/// <summary>PID: 92  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	/// <summary>PID: 92  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Sysuptimetimeoutafterretriesflag_92 {get { return GetParameter(92); }set { SetParameter(92, value); }}
-	/// <summary>PID: 92  | Type: read | DISCREETS: False = 0, True = 1</summary>
-	public System.Object Sysuptimetimeoutafterretriesflag {get { return GetParameter(92); }set { SetParameter(92, value); }}
+	public System.Object Sysuptimegroupresultafterretries_92 {get { return GetParameter(92); }set { SetParameter(92, value); }}
+	/// <summary>PID: 92  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
+	public System.Object Sysuptimegroupresultafterretries {get { return GetParameter(92); }set { SetParameter(92, value); }}
 	/// <summary>PID: 93  | Type: dummy</summary>
 	public System.Object Sysuptimeaftergrouptrigger_dummy {get { return GetParameter(93); }set { SetParameter(93, value); }}
 	/// <summary>PID: 95  | Type: read</summary>
@@ -1355,17 +1355,17 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Sysdescr {get { return GetParameter(108); }set { SetParameter(108, value); }}
 	/// <summary>PID: 991  | Type: dummy</summary>
 	public System.Object Iftabletimeouttrigger_dummy {get { return GetParameter(991); }set { SetParameter(991, value); }}
-	/// <summary>PID: 992  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	/// <summary>PID: 992  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Iftabletimeoutafterretriesflag_992 {get { return GetParameter(992); }set { SetParameter(992, value); }}
-	/// <summary>PID: 992  | Type: read | DISCREETS: False = 0, True = 1</summary>
-	public System.Object Iftabletimeoutafterretriesflag {get { return GetParameter(992); }set { SetParameter(992, value); }}
+	public System.Object Iftablegroupresultafterretries_992 {get { return GetParameter(992); }set { SetParameter(992, value); }}
+	/// <summary>PID: 992  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
+	public System.Object Iftablegroupresultafterretries {get { return GetParameter(992); }set { SetParameter(992, value); }}
 	/// <summary>PID: 993  | Type: dummy</summary>
 	public System.Object Iftablecalculatebitrates_dummy {get { return GetParameter(993); }set { SetParameter(993, value); }}
-	/// <summary>PID: 995  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	/// <summary>PID: 995  | Type: read | DISCREETS: Not Restarted = 0, Restarted = 1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Iftablesnmpagentrestartflag_995 {get { return GetParameter(995); }set { SetParameter(995, value); }}
-	/// <summary>PID: 995  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	/// <summary>PID: 995  | Type: read | DISCREETS: Not Restarted = 0, Restarted = 1</summary>
 	public System.Object Iftablesnmpagentrestartflag {get { return GetParameter(995); }set { SetParameter(995, value); }}
 	/// <summary>PID: 999  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]

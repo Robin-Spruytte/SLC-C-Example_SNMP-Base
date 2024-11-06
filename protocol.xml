@@ -100,8 +100,8 @@ Any inquiries can be addressed to:
 			<Type>dummy</Type>
 		</Param>
 		<Param id="92">
-			<Name>sysUptimeTimeoutAfterRetriesFlag</Name>
-			<Description>SysUptime Timeout After Retries Flag</Description>
+			<Name>sysUptimeGroupResultAfterRetries</Name>
+			<Description>Group Result After Retries - SysUptime</Description>
 			<Type>read</Type>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -112,11 +112,11 @@ Any inquiries can be addressed to:
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>False</Display>
+						<Display>Success</Display>
 						<Value>0</Value>
 					</Discreet>
 					<Discreet>
-						<Display>True</Display>
+						<Display>Timeout</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
@@ -466,8 +466,8 @@ This value should include the full name and version identification of the system
 			<Type>dummy</Type>
 		</Param>
 		<Param id="992">
-			<Name>IfTableTimeoutAfterRetriesFlag</Name>
-			<Description>Timeout After Retries Interface Table Flag</Description>
+			<Name>IfTableGroupResultAfterRetries</Name>
+			<Description>Group Result After Retries - Interface Table</Description>
 			<Type>read</Type>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -481,11 +481,11 @@ This value should include the full name and version identification of the system
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>False</Display>
+						<Display>Success</Display>
 						<Value>0</Value>
 					</Discreet>
 					<Discreet>
-						<Display>True</Display>
+						<Display>Timeout</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
@@ -515,11 +515,11 @@ This value should include the full name and version identification of the system
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>False</Display>
+						<Display>Not Restarted</Display>
 						<Value>0</Value>
 					</Discreet>
 					<Discreet>
-						<Display>True</Display>
+						<Display>Restarted</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
