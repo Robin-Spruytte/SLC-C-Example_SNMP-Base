@@ -196,52 +196,6 @@ namespace Skyline.Protocol.Extension
 			protocol.NotifyProtocol(220, columnsPidArray, columnsValuesArray);
 		}
 
-		///// <summary>
-		///// Sets the specified columns.
-		///// </summary>
-		///// <param name="protocol">Link with SLProtocol process.</param>
-		///// <param name="columnsPid">The column parameter ID of the columns to update. First item should contain the table PID. Primary key column PID should never be provided.</param>
-		///// <param name="columnsValues">The column values for each column to update. First item should contain the primary keys as <see cref="string" />.</param>
-		///// <param name="dateTime">The time stamp for the new values (in case of historySets).</param>
-		///// <exception cref="ArgumentNullException"><paramref name="columnsPid"/> or <paramref name="columnsValues"/> is <see langword="null"/>.</exception>
-		//public static void SetColumns(this SLProtocol protocol, IEnumerable<int> columnsPid, IEnumerable<IEnumerable<object>> columnsValues, DateTime? dateTime = null)
-		//{
-		//	// Sanity checks
-		//	if (columnsPid == null)
-		//		throw new ArgumentNullException(nameof(columnsPid));
-
-		//	if (columnsValues == null)
-		//		throw new ArgumentNullException(nameof(columnsValues));
-
-		//	int columnsPidCount = columnsPid.Count();
-
-		//	if (columnsPidCount != columnsValues.Count())
-		//		throw new ArgumentException($"Length of {nameof(columnsPid)} '{columnsPidCount}' != length of {nameof(columnsValues)} '{columnsValues.Count()}'.");
-
-		//	// Prepare data
-		//	object[] columnsPidArray = new object[columnsPidCount + 1];
-		//	object[] columnsValuesArray = new object[columnsPidCount];
-
-		//	int columnPos = 0;
-		//	foreach (var columnPid in columnsPid)
-		//	{
-		//		columnsPidArray[columnPos++] = columnPid;
-		//	}
-
-		//	columnPos = 0;
-		//	foreach (var columnValue in columnsValues)
-		//	{
-		//		columnsValuesArray[columnPos++] = columnValue.ToArray();
-		//	}
-
-		//	// Options (Clear & Leave, history sets)
-		//	object[] setColumnOptions = dateTime == null ? new object[] { true } : new object[] { true, dateTime.Value };
-		//	columnsPidArray[columnsPidCount] = setColumnOptions;
-
-		//	// Set columns
-		//	protocol.NotifyProtocol(220, columnsPidArray, columnsValuesArray);
-		//}
-
 		/// <summary>
 		/// Sets the specified columns (Requires Main 10.0.0 [CU?] or Feature 9.6.6 [CU?] (see RN 23815)).
 		/// </summary>
