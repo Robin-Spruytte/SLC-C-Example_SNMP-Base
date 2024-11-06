@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Skyline.DataMiner.Scripting;
+using Skyline.Protocol.Extension;
 
 using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
@@ -82,11 +83,7 @@ public class QAction
 			Parameter.Dot3statstable.Idx.dot3statsduplexstatus_1302,
 		};
 
-		object[] columns = (object[])protocol.NotifyProtocol(
-			(int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS,
-			Parameter.Dot3statstable.tablePid,
-			columnsToGet);
-
+		object[] columns = protocol.GetColumns(Parameter.Dot3statstable.tablePid, columnsToGet);
 		object[] keys = (object[])columns[0];
 		object[] duplexStatuses = (object[])columns[1];
 
@@ -232,10 +229,7 @@ public class IfTable
 			Parameter.Iftable.Idx.iftableifbandwidthutilization,
 		};
 
-		object[] ifTableColumns = (object[])protocol.NotifyProtocol(
-			(int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS,
-			Parameter.Iftable.tablePid,
-			columnsToGet);
+		object[] ifTableColumns = protocol.GetColumns(Parameter.Iftable.tablePid, columnsToGet);
 
 		this.Keys = (object[])ifTableColumns[0];
 		this.Descriptions = (object[])ifTableColumns[1];
@@ -334,10 +328,7 @@ public class IfXTable
 			Parameter.Ifxtable.Idx.ifxtableifbandwidthutilization,
 		};
 
-		object[] ifXTableColumns = (object[])protocol.NotifyProtocol(
-			(int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS,
-			Parameter.Ifxtable.tablePid,
-			columnsToGet);
+		object[] ifXTableColumns = protocol.GetColumns(Parameter.Ifxtable.tablePid, columnsToGet);
 
 		this.Keys = (object[])ifXTableColumns[0];
 		this.Name = (object[])ifXTableColumns[1];

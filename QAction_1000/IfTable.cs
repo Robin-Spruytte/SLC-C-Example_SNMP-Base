@@ -9,7 +9,7 @@
 	using Skyline.DataMiner.Utils.Rates.Protocol;
 	using Skyline.DataMiner.Utils.SafeConverters;
 	using Skyline.DataMiner.Utils.SNMP;
-	using Skyline.Protocol.Extensions;
+	using Skyline.Protocol.Extension;
 	using Skyline.Protocol.Interface;
 
 	public class IfTableTimeoutProcessor
@@ -78,14 +78,14 @@
 					Parameter.Iftable.Idx.iftableifratedata,
 				};
 
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, columnsToGet);
+				object[] tableData = protocol.GetColumns(Parameter.Iftable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				IfRateData = (object[])tableData[1];
 			}
 		}
 
-		private class IfTableSetter
+		private sealed class IfTableSetter
 		{
 			private readonly SLProtocol protocol;
 
@@ -94,7 +94,7 @@
 				this.protocol = protocol;
 			}
 
-			public Dictionary<object, List<object>> SetColumnsData { get; } = new Dictionary<object, List<object>>
+			public Dictionary<int, List<object>> SetColumnsData { get; } = new Dictionary<int, List<object>>
 			{
 				{ Parameter.Iftable.tablePid, new List<object>() },
 				{ Parameter.Iftable.Pid.iftableifratedata, new List<object>() },
@@ -253,7 +253,7 @@
 					Parameter.Dot3statstable.Idx.dot3statsduplexstatus,
 				};
 
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, columnsToGet);
+				object[] tableData = protocol.GetColumns(Parameter.Dot3statstable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				DuplexStatuses = (object[])tableData[1];
@@ -302,7 +302,7 @@
 					Parameter.Iftable.Idx.iftableifratedata,
 				};
 
-				object[] ifTableData = (object[])protocol.NotifyProtocol(321, Parameter.Iftable.tablePid, columnsToGet);
+				object[] ifTableData = protocol.GetColumns(Parameter.Iftable.tablePid, columnsToGet);
 				Keys = (object[])ifTableData[0];
 				OctetsIn = (object[])ifTableData[1];
 				OctetsOut = (object[])ifTableData[2];
@@ -313,13 +313,13 @@
 
 			private void LoadIfXTable()
 			{
-				List<uint> columnsToGet = new List<uint>
+				uint[] columnsToGet = new uint[]
 				{
 					Parameter.Ifxtable.Idx.ifxtableifindex,
 					Parameter.Ifxtable.Idx.ifxtableifcounterdiscontinuitytime,
 				};
 
-				object[] ifXTableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet.ToArray());
+				object[] ifXTableData = protocol.GetColumns(Parameter.Ifxtable.tablePid, columnsToGet);
 				object[] ifXTableKeys = (object[])ifXTableData[0];
 				object[] ifXTableDiscontinuities = (object[])ifXTableData[1];
 
@@ -343,7 +343,7 @@
 				this.protocol = protocol;
 			}
 
-			public Dictionary<object, List<object>> SetColumnsData { get; } = new Dictionary<object, List<object>>
+			public Dictionary<int, List<object>> SetColumnsData { get; } = new Dictionary<int, List<object>>
 			{
 				{ Parameter.Iftable.tablePid, new List<object>() },
 				{ Parameter.Iftable.Pid.iftableifinbitrate, new List<object>() },

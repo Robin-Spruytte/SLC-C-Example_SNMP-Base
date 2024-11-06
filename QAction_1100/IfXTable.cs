@@ -8,7 +8,7 @@
 	using Skyline.DataMiner.Utils.Rates.Protocol;
 	using Skyline.DataMiner.Utils.SafeConverters;
 	using Skyline.DataMiner.Utils.SNMP;
-	using Skyline.Protocol.Extensions;
+	using Skyline.Protocol.Extension;
 	using Skyline.Protocol.Interface;
 
 	public class IfxTableTimeoutProcessor
@@ -77,7 +77,7 @@
 					Parameter.Ifxtable.Idx.ifxtableifratedata,
 				};
 
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet);
+				object[] tableData = protocol.GetColumns(Parameter.Ifxtable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				IfRateData = (object[])tableData[1];
@@ -93,7 +93,7 @@
 				this.protocol = protocol;
 			}
 
-			public Dictionary<object, List<object>> SetColumnsData { get; } = new Dictionary<object, List<object>>
+			public Dictionary<int, List<object>> SetColumnsData { get; } = new Dictionary<int, List<object>>
 			{
 				{ Parameter.Ifxtable.tablePid, new List<object>() },
 				{ Parameter.Ifxtable.Pid.ifxtableifratedata, new List<object>() },
@@ -251,7 +251,7 @@
 					Parameter.Dot3statstable.Idx.dot3statsduplexstatus,
 				};
 
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Dot3statstable.tablePid, columnsToGet);
+				object[] tableData = protocol.GetColumns(Parameter.Dot3statstable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				DuplexStatuses = (object[])tableData[1];
@@ -295,7 +295,7 @@
 					Parameter.Ifxtable.Idx.ifxtableifratedata,
 				};
 
-				object[] tableData = (object[])protocol.NotifyProtocol(321, Parameter.Ifxtable.tablePid, columnsToGet);
+				object[] tableData = protocol.GetColumns(Parameter.Ifxtable.tablePid, columnsToGet);
 
 				Keys = (object[])tableData[0];
 				OctetsIn = (object[])tableData[1];
@@ -315,7 +315,7 @@
 				this.protocol = protocol;
 			}
 
-			public Dictionary<object, List<object>> SetColumnsData { get; } = new Dictionary<object, List<object>>
+			public Dictionary<int, List<object>> SetColumnsData { get; } = new Dictionary<int, List<object>>
 			{
 				{ Parameter.Ifxtable.tablePid, new List<object>() },
 				{ Parameter.Ifxtable.Pid.ifxtableifinbitrate, new List<object>() },
