@@ -65,9 +65,9 @@ public static class Parameter
 	public const int iftablesetinstance = 999;
 	/// <summary>PID: 1092 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int ifxtabletimeoutafterretriesflag_1092 = 1092;
+	public const int ifxtablegroupresultafterretries_1092 = 1092;
 	/// <summary>PID: 1092 | Type: read</summary>
-	public const int ifxtabletimeoutafterretriesflag = 1092;
+	public const int ifxtablegroupresultafterretries = 1092;
 	/// <summary>PID: 1095 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int ifxtablesnmpagentrestartflag_1095 = 1095;
@@ -1146,8 +1146,8 @@ public interface SLProtocolExt : SLProtocol
 	object Iftableifratedata { get; set; }
 	object Iftableifadminstatus_1057 { get; set; }
 	object Ifxtabletimeouttrigger_dummy { get; set; }
-	object Ifxtabletimeoutafterretriesflag_1092 { get; set; }
-	object Ifxtabletimeoutafterretriesflag { get; set; }
+	object Ifxtablegroupresultafterretries_1092 { get; set; }
+	object Ifxtablegroupresultafterretries { get; set; }
 	object Ifxtablecalculatebitrates_dummy { get; set; }
 	object Ifxtablesnmpagentrestartflag_1095 { get; set; }
 	object Ifxtablesnmpagentrestartflag { get; set; }
@@ -1487,11 +1487,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Iftableifadminstatus_1057 {get { return GetParameter(1057); }set { SetParameter(1057, value); }}
 	/// <summary>PID: 1091  | Type: dummy</summary>
 	public System.Object Ifxtabletimeouttrigger_dummy {get { return GetParameter(1091); }set { SetParameter(1091, value); }}
-	/// <summary>PID: 1092  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	/// <summary>PID: 1092  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Ifxtabletimeoutafterretriesflag_1092 {get { return GetParameter(1092); }set { SetParameter(1092, value); }}
-	/// <summary>PID: 1092  | Type: read | DISCREETS: False = 0, True = 1</summary>
-	public System.Object Ifxtabletimeoutafterretriesflag {get { return GetParameter(1092); }set { SetParameter(1092, value); }}
+	public System.Object Ifxtablegroupresultafterretries_1092 {get { return GetParameter(1092); }set { SetParameter(1092, value); }}
+	/// <summary>PID: 1092  | Type: read | DISCREETS: Success = 0, Timeout = 1</summary>
+	public System.Object Ifxtablegroupresultafterretries {get { return GetParameter(1092); }set { SetParameter(1092, value); }}
 	/// <summary>PID: 1093  | Type: dummy</summary>
 	public System.Object Ifxtablecalculatebitrates_dummy {get { return GetParameter(1093); }set { SetParameter(1093, value); }}
 	/// <summary>PID: 1095  | Type: read | DISCREETS: False = 0, True = 1</summary>

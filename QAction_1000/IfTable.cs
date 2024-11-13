@@ -150,7 +150,7 @@
 				ProcessUtilization(duplexStatuses, i, key, bitrateIn, bitrateOut);
 			}
 
-			if (iftableGetter.IsSnmpAgentRestarted)
+			if (iftableGetter.IsSnmpAgentRestarted == SnmpAgentStates.Restarted)
 			{
 				iftableSetter.SetParamsData[Parameter.iftablesnmpagentrestartflag] = 0;
 			}
@@ -180,7 +180,7 @@
 			string discontinuityTime = Convert.ToString(iftableGetter.Discontinuity[getPosition]);
 			bool discontinuity = Interface.HasDiscontinuity(discontinuityTime, rateData.DiscontinuityTime);
 
-			if (iftableGetter.IsSnmpAgentRestarted || discontinuity)
+			if (iftableGetter.IsSnmpAgentRestarted == SnmpAgentStates.Restarted || discontinuity)
 			{
 				rateData.BitrateIn = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
 				rateData.BitrateOut = SnmpRate32.FromJsonString(String.Empty, MinDelta, MaxDelta);
@@ -281,12 +281,12 @@
 
 			public object[] RateData { get; private set; }
 
-			public bool IsSnmpAgentRestarted { get; private set; }
+			public SnmpAgentStates IsSnmpAgentRestarted { get; private set; }
 
 			public void Load()
 			{
-				IsSnmpAgentRestarted = Convert.ToBoolean(Convert.ToInt16(protocol.GetParameter(Parameter.iftablesnmpagentrestartflag)));
-
+				Enum.TryParse<SnmpAgentStates>(Convert.ToString(protocol.GetParameter(Parameter.iftablesnmpagentrestartflag)), out var snmpAgentState);
+				IsSnmpAgentRestarted = snmpAgentState;
 				LoadIfTable();
 				LoadIfXTable();
 			}

@@ -2584,8 +2584,8 @@ Currently only calculated for Ethernet interfaces.
 			<Type>dummy</Type>
 		</Param>
 		<Param id="1092">
-			<Name>ifXTableTimeoutAfterRetriesFlag</Name>
-			<Description>InterfaceX Table Timeout After Retries Flag</Description>
+			<Name>ifXTableGroupResultAfterRetries</Name>
+			<Description>Group Result After Retries - InterfaceX Table</Description>
 			<Type>read</Type>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -2599,11 +2599,11 @@ Currently only calculated for Ethernet interfaces.
 				<Type>discreet</Type>
 				<Discreets>
 					<Discreet>
-						<Display>False</Display>
+						<Display>Success</Display>
 						<Value>0</Value>
 					</Discreet>
 					<Discreet>
-						<Display>True</Display>
+						<Display>Timeout</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
