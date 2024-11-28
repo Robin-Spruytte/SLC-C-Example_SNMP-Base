@@ -6,10 +6,10 @@
 
 	using Skyline.DataMiner.Scripting;
 	using Skyline.DataMiner.Utils.Interfaces;
+	using Skyline.DataMiner.Utils.Protocol.Extension;
 	using Skyline.DataMiner.Utils.Rates.Protocol;
 	using Skyline.DataMiner.Utils.SafeConverters;
 	using Skyline.DataMiner.Utils.SNMP;
-	using Skyline.Protocol.Extension;
 	using Skyline.Protocol.Interface;
 
 	public class IfTableTimeoutProcessor
@@ -285,8 +285,7 @@
 
 			public void Load()
 			{
-				IsSnmpAgentRestarted = Convert.ToBoolean(Convert.ToInt16(protocol.GetParameter(Parameter.iftablesnmpagentrestartflag)));
-
+				IsSnmpAgentRestarted = Convert.ToBoolean(protocol.GetParameter(Parameter.iftablesnmpagentrestartflag));
 				LoadIfTable();
 				LoadIfXTable();
 			}

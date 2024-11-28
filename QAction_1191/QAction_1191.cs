@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Skyline.DataMiner.Scripting;
-using Skyline.Protocol.Extension;
+using Skyline.DataMiner.Utils.Protocol.Extension;
 
 using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
