@@ -5,10 +5,10 @@
 
 	using Skyline.DataMiner.Scripting;
 	using Skyline.DataMiner.Utils.Interfaces;
+	using Skyline.DataMiner.Utils.Protocol.Extension;
 	using Skyline.DataMiner.Utils.Rates.Protocol;
 	using Skyline.DataMiner.Utils.SafeConverters;
 	using Skyline.DataMiner.Utils.SNMP;
-	using Skyline.Protocol.Extension;
 	using Skyline.Protocol.Interface;
 
 	public class IfxTableTimeoutProcessor
@@ -149,7 +149,7 @@
 				ProcessUtilization(duplexStatuses, i, key, bitrateIn, bitrateOut);
 			}
 
-			if (ifxTableGetter.IsSnmpAgentRestarted == SnmpAgentStates.Restarted)
+			if (ifxTableGetter.IsSnmpAgentRestarted)
 			{
 				ifxTableSetter.SetParamsData[Parameter.ifxtablesnmpagentrestartflag] = 0;
 			}
@@ -179,7 +179,7 @@
 			string discontinuityTime = Convert.ToString(ifxTableGetter.Discontinuity[getPosition]);
 			bool discontinuity = Interface.HasDiscontinuity(discontinuityTime, rateData.DiscontinuityTime);
 
-			if (ifxTableGetter.IsSnmpAgentRestarted == SnmpAgentStates.Restarted || discontinuity)
+			if (ifxTableGetter.IsSnmpAgentRestarted || discontinuity)
 			{
 				rateData.BitrateIn = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
 				rateData.BitrateOut = SnmpRate64.FromJsonString(String.Empty, MinDelta, MaxDelta);
@@ -279,12 +279,11 @@
 
 			public object[] RateData { get; private set; }
 
-			public SnmpAgentStates IsSnmpAgentRestarted { get; private set; }
+			public bool IsSnmpAgentRestarted { get; private set; }
 
 			public void Load()
 			{
-				Enum.TryParse<SnmpAgentStates>(Convert.ToString(protocol.GetParameter(Parameter.ifxtablesnmpagentrestartflag)), out var snmpAgentRestarted);
-				IsSnmpAgentRestarted = snmpAgentRestarted;
+				IsSnmpAgentRestarted = Convert.ToBoolean(protocol.GetParameter(Parameter.ifxtablesnmpagentrestartflag));
 
 				uint[] columnsToGet = new uint[]
 				{
@@ -334,7 +333,7 @@
 
 			public void SetParams()
 			{
-				protocol.SetParams(SetParamsData);
+				protocol.SetParameters(SetParamsData);
 			}
 		}
 	}
