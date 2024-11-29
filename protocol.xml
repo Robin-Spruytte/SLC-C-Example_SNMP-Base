@@ -6840,7 +6840,8 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 											<Company>Skyline Communications</Company>
 										</Provider>
 										<Changes>
-											<Change>Improved ProtocolExtensions.</Change>
+											<Change>Move to ProtocolExtensions NuGet package.</Change>
+											<Change>Fine-tuning Discreet Values to avoid true/false.</Change>
 										</Changes>
 										<References>
 											<TaskId>198352</TaskId>
