@@ -6834,7 +6834,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 										</References>
 									</MinorVersion>
 									<MinorVersion id="6" basedOn="1.0.0.5">
-										<Date>2024-11-06</Date>
+										<Date>2024-11-29</Date>
 										<Provider>
 											<Author>SVD</Author>
 											<Company>Skyline Communications</Company>
