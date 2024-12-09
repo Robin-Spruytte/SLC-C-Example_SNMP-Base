@@ -30,7 +30,7 @@ type: connector
 # If the ID is filled in but does not exist yet, a new Catalog item will be registered with this ID.
 # If the ID is filled in but does exist, properties of the item will be overwritten.
 #   Must be a valid GUID.
-id: 61c24ba8-8959-4253-ae56-f56a98ccb327
+id: f4ee2af6-5c68-487b-b4ba-cccb5b3887a2
 # [Required]
 # The human-friendly name of the Catalog item.
 # Can be changed at any time.
