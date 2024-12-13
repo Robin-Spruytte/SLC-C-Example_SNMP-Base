@@ -1,3 +1,6 @@
+# WARNING! DO NOT CHANGE THIS FILE.
+# If you wish to make adjustments based on the `auto-generated-catalog.yml` file, you can do so by creating a `catalog.yml` file in the root of your repository.
+# 
 # [Required]
 # Possible values for the Catalog item that can be deployed on a DataMiner System:
 #   - automationscript: If the Catalog item is a general-purpose DataMiner Automation script.
@@ -37,7 +40,7 @@ id: f4ee2af6-5c68-487b-b4ba-cccb5b3887a2
 #   Max length: 100 characters.
 #   Cannot contain newlines.
 #   Cannot contain leading or trailing whitespace characters.
-title: Example SNMP-Base
+title: Skyline Example - SNMP Base
 # [Optional]
 # General information about the Catalog item.
 #   Max length: 100,000 characters
@@ -59,7 +62,10 @@ documentation_url:
 # Format: 'name <email> (url)'
 #   The name is required; max 256 characters.
 #   The email and url are optional, and should be in valid email/URL formats.
-owners: []
+owners:
+  - email: simon.vandamme@skyline.be
+    name: Simon Vandamme
+    url: 
 # [Optional]
 # Tags that allow you to categorize your Catalog items.
 #   Max number of tags: 5
