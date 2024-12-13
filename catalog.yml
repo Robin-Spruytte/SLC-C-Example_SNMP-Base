@@ -42,25 +42,6 @@ id: f4ee2af6-5c68-487b-b4ba-cccb5b3887a2
 title: Skyline Example - SNMP Base
 
 # [Optional]
-# General information about the Catalog item.
-#   Max length: 100,000 characters
-# Currently not shown in the Catalog UI but will be supported in the near future.
-short_description: Example connector showing how to retrieve the common SNMP parameters and tables on every device.
-
-# [Optional]
-# A valid URL that points to the source code.
-#   A valid URL
-#   Max length: 2048 characters
-source_code_url: https://github.com/SkylineCommunications/SLC-C-Example_SNMP-Base
-
-# [Optional]
-# A valid URL that points to documentation.
-#   A valid URL
-#   Max length: 2048 characters
-# Currently not shown in the Catalog UI but will be supported in the near future.
-documentation_url: 
-
-# [Optional]
 # People who are responsible for this Catalog item. Might be developers, but this is not required.
 # Format: 'name <email> (url)'
 #   The name is required; max 256 characters.
@@ -68,14 +49,3 @@ documentation_url:
 owners:
   - name: 'Simon Vandamme'
     email: 'simon.vandamme@skyline.be'
-
-# [Optional]
-# Tags that allow you to categorize your Catalog items.
-#   Max number of tags: 5
-#   Max length: 50 characters.
-#   Cannot contain newlines.
-#   Cannot contain leading or trailing whitespace characters.
-tags:
-  - dataminer
-  - dataminer-connector
-  - example
