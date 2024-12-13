@@ -65,7 +65,9 @@ documentation_url:
 # Format: 'name <email> (url)'
 #   The name is required; max 256 characters.
 #   The email and url are optional, and should be in valid email/URL formats.
-owners: [Simon Vandamme <simon.vandamme@skyline.be>]
+owners:
+  - name: 'Simon Vandamme'
+    email: 'simon.vandamme@skyline.be'
 
 # [Optional]
 # Tags that allow you to categorize your Catalog items.
