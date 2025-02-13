@@ -535,7 +535,7 @@ This value should include the full name and version identification of the system
 				<LengthType>next param</LengthType>
 			</Interprete>
 		</Param>
-		<Param id="1000" trending="false">
+		<Param id="1000">
 			<Name>ifTable</Name>
 			<Description>If Table</Description>
 			<Type>array</Type>
@@ -2653,7 +2653,7 @@ Currently only calculated for Ethernet interfaces.
 				<LengthType>next param</LengthType>
 			</Interprete>
 		</Param>
-		<Param id="1100" trending="false">
+		<Param id="1100">
 			<Name>ifXTable</Name>
 			<Description>If X Table</Description>
 			<Type>array</Type>
@@ -6257,7 +6257,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 			</Measurement>
 		</Param>
 
-		<Param id="1300" trending="false">
+		<Param id="1300">
 			<Name>dot3StatsTable</Name>
 			<Description>Ethernet Interfaces</Description>
 			<Type>array</Type>
