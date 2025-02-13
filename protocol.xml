@@ -6854,7 +6854,7 @@ This was felt to be sufficiently valuable to justify the redundancy.]]>
 											<Company>Skyline Communications</Company>
 										</Provider>
 										<Changes>
-											<Change>If and Ifx table are no longer saved to database to reduce database updates during bitrate calculations</Change>
+											<Change>Internal tables (ifTable, ifXTable and dot3StatsTable) are now volatile to reduce database footprint as storing keys on those hidden tables has no added value.</Change>
 										</Changes>
 										<References>
 											<TaskId>259569</TaskId>
